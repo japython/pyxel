@@ -1,7 +1,7 @@
 import pyxel
 
 pyxel.init(80,64,title="janken game")
-pyxel.load("janken_draw.pyxres")
+pyxel.load("janken.pyxres")
 pyxel.mouse(True)
 
 hand_width=16
