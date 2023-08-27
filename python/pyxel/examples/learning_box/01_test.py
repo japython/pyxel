@@ -2,10 +2,24 @@ import pyxel
 
 class App:
     def __init__(self):
-        pyxel.init(128, 128, title="Hello Pyxel",fps=30, quit_key=pyxel.KEY_Q, display_scale=10)
+        pyxel.init(160, 120, title="Hello Pyxel",fps=30, quit_key=pyxel.KEY_Q, display_scale=10)
         pyxel.image(0).load(0, 0, "assets/pyxel_logo_38x16.png")
         pyxel.image(1).load(0, 0, "assets/noguchi_128x128.png")
-        pyxel.load("assets/sample_test.pyxres")
+        pyxel.image(2).set(
+            0,
+            0,
+            [
+                "10000000",
+                "01000000",
+                "00100000",
+                "00010000",
+                "00001000",
+                "00000100",
+                "00000010",
+                "00000001",
+            ],
+        )
+        pyxel.load("assets/sample.pyxres")
         #pyxel.image(0).set(50, 50, ["0123", "4567", "89ab", "cdef"])
         pyxel.mouse(True)
 
@@ -29,8 +43,16 @@ class App:
         #pyxel.text(65, 20, str(pyxel.mouse_y), 10)
         pyxel.blt(70, 70, 0, 0, 0, 38, 16)
         pyxel.blt(70, 90, 1, 0, 8, 16, 8)
-        pyxel.bltm(0, 0, 0, 0, 0, 128, 128)
         #(x, y, image, )
+        for i in range(3):
+            x = 140 + i * 16
+            y = 123 + pyxel.sin(pyxel.frame_count * 5.73 + i * 120.3) * 5
+            col = 15 if pyxel.play_pos(i) else 13
+            pyxel.pal(1, col)
+            pyxel.blt(x, y, 2, 0, 0, 8, 8, 0)
+        pyxel.pal()
 
         
+
+
 App()
