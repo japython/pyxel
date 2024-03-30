@@ -49,8 +49,9 @@ def update():
             com_hand = int(pyxel.frame_count / 5) % 3
 
     elif status == 1:
-        pass #nothig done yet
-
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            status = 0
+        
     return
 
 def draw():
