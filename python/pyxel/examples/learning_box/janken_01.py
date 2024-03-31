@@ -1,28 +1,40 @@
 import pyxel
 
+
 pyxel.init(80,64,title="janken game")
+
 pyxel.load("janken_draw.pyxres")
+
 pyxel.mouse(True)
 
+
 hand_width=16
+
 hand_height=16
 
+
 com_hand = 0
+
 #initialize variable of com hand
 
 player_hand =0
+
 #initialize variable of player hand
 
 status = 0
+
 #initialize variable of status of the one before clicking and after clicking
 
+
 result = [[0, 1, 2],
+
           [2, 0, 1],
+
           [1, 2, 0]]
+
 
 # result player [player] [cpu] 0: draw 1 p win 2 : p lose
 
-message = ["DRAW","WIN","LOSE"]
 
 def check_area():
     ret = False
@@ -49,7 +61,12 @@ def update():
             player_hand = int(pyxel.mouse_x / 16) -1
             #make sure position x of mouse, '-1' means goo or choki or paa
 
-            com_hand = pyxel.rndi(0,2) #hand is chosen by clicking
+            com_hand = pyxel.rndi(0,2)
+            #hand is chosen by clicking
+
+            idx = result[player_hand][com_hand]
+            pyxel.play(0, idx)
+
             status = 1
 
         else:
@@ -81,8 +98,9 @@ def draw():
     elif status == 1:
         pyxel.blt(16*(player_hand+1), 32, 0, 16*player_hand, 0, 16, 16, 0)
         idx = result[player_hand][com_hand]
-        pyxel.text(16*(player_hand+1),48, message[idx],7)
+        pyxel.text(16*(player_hand+1),48, (["DRAW","WIN","LOSE"])[idx],7)
 
     return
 
 pyxel.run(update, draw)
+
