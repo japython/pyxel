@@ -16,6 +16,14 @@ player_hand =0
 status = 0
 #initialize variable of status of the one before clicking and after clicking
 
+result = [[0, 1, 2],
+          [2, 0, 1],
+          [1, 2, 0]]
+
+# result player [player] [cpu] 0: draw 1 p win 2 : p lose
+
+message = ["DRAW","WIN","LOSE"]
+
 def check_area():
     ret = False
 
@@ -52,6 +60,7 @@ def update():
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             status = 0
         
+        
     return
 
 def draw():
@@ -71,6 +80,8 @@ def draw():
 
     elif status == 1:
         pyxel.blt(16*(player_hand+1), 32, 0, 16*player_hand, 0, 16, 16, 0)
+        idx = result[player_hand][com_hand]
+        pyxel.text(16*(player_hand+1),48, message[idx],7)
 
     return
 
