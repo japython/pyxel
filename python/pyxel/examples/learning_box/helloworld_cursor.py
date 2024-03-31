@@ -1,7 +1,7 @@
 import pyxel
 
 pyxel.init(100,100)
-pyxel.load("test.pyxres")
+pyxel.load("sample.pyxres")
 
 splite_width=8
 splite_height=8
