@@ -14,7 +14,7 @@ dy = 0
 pldir = 1
 #player direction status
 
-chkpoint = [(2,0),(6,0),(2,7),(6,7)]
+chkpoint = [(0,0),(8,0),(0,8),(8,8)]
 
 def chkwall(cx,cy):
     c = 0
