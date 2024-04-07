@@ -51,8 +51,9 @@ def update():
 
     
     lr = pyxel.sgn(dx)
-    
+    #Returns 1 when x is positive, 0 when it is zero, and -1 when it is negative
     loop = abs(dx)
+    #
     while 0 < loop :
         if chkwall( x + lr, y) != 0:
             dx = 0
