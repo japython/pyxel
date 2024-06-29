@@ -4,7 +4,7 @@ pyxel.load("ninja.pyxres")
 
 x = 8
 #splite default x axis position
-y = 100
+y = 80
 #splite default y axis position
 
 dx = 0
