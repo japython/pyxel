@@ -52,7 +52,8 @@ def update():
             bar_x -= 10
 
     if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
-           ball_dy = -4 - pyxel.rndi(0,2)
+           ball_dy = -4 
+           #- pyxel.rndi(0,2)
 
     return
 
