@@ -4,7 +4,7 @@ pyxel.load("ninja.pyxres")
 
 x = 8
 #splite default x axis position
-y = 80
+y = 35
 #splite default y axis position
 
 dx = 0
@@ -14,28 +14,31 @@ dy = 0
 pldir = 1
 #player direction status
 
-#chkpoint = [(0,0),(8,0),(0,8),(8,8)]
+chkpoint = [(2,0),(6,0),(2,7),(6,7)]
 
-#def chkwall(cx,cy):
-    #c = 0
-    #if cx < 0 or pyxel.width -8 < cx:
-    #    c = c + 1
-    #for cpx,cpy in chkpoint:
-    #    xi = (cx + cpx)//8
-     #   yi = (cy + cpy)//8
-     #   if (1,0) == pyxel.tilemap(0).pget(xi,yi):
-     #       c = c + 1
-    #return c
+def chkwall(cx,cy):
+    # To check whtether splite can move more
+    # If can move, return 0, cannot , return more than 1
+
+    c = 0
+
+    if cx < 0 or pyxel.width -8 < cx:
+        c = c + 1
+        
+    for cpx,cpy in chkpoint:
+        xi = (cx + cpx)//8
+        yi = (cy + cpy)//8
+        if (1,0) == pyxel.tilemap(0).pget(xi,yi):
+            c = c + 1
+    return c
 
 def update():
     global x,y,dx,dy,pldir
-    # to use variable came from outside of funstion, global setting necessarry
 
     if pyxel.btn(pyxel.KEY_LEFT):
         
         dx = -2
         pldir = -1
-
 
     elif pyxel.btn(pyxel.KEY_RIGHT):
         
@@ -45,26 +48,19 @@ def update():
     else:
 
         dx = 0
-    
-    x += dx
-    # I cannot understand why dx and dy are necessary besides x and y though, it is easier to maintain and controle movement with flexibility.
 
-    
+    lr = pyxel.sgn(dx)
+    loop = abs(dx)
 
-    #lr = pyxel.sgn(dx)
-    
-    #loop = abs(dx)
-    #while 0 < loop :
-        #if chkwall( x + lr, y) != 0:
-        #    dx = 0
-        #    break
-        #x = x + lr
-        #loop = loop -1
+    while 0 < loop :
+        if chkwall( x + lr, y) != 0:
+            dx = 0
+            break
 
-    
+        x = x + lr
+        loop = loop -1
+
     return
-
-    
 
 def draw():
     pyxel.cls(0)
