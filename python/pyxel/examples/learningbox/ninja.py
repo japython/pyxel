@@ -44,13 +44,26 @@ def update():
         
         dx = 2
         pldir = 1
+
+    elif pyxel.btn(pyxel.KEY_UP):
+        
+        dy = -2
+
+    elif pyxel.btn(pyxel.KEY_DOWN):
+        
+        dy = 2
     
     else:
 
         dx = 0
+        dy = 0
 
+ 
     lr = pyxel.sgn(dx)
+    ud = pyxel.sgn(dy)
+
     loop = abs(dx)
+    loops = abs(dy)
 
     while 0 < loop :
         if chkwall( x + lr, y) != 0:
@@ -59,7 +72,16 @@ def update():
 
         x = x + lr
         loop = loop -1
+    
+    while 0 < loops :
+        if chkwall( x , y + ud ) != 0:
+            dy = 0
+            break
 
+        y = y + ud
+        loops = loops -1
+
+         
     return
 
 def draw():
