@@ -3,21 +3,28 @@ pyxel.init(128,128,title="NINJA")
 pyxel.load("ninja.pyxres")
 
 x = 48
-
+#splite default x axis position
 y = 64
+#splite default y axis position
 
 dx = 0
 
 dy = 0
 
 pldir = 1
+#player direction status
 
 chkpoint = [(2,0),(6,0),(2,7),(6,7)]
 
 def chkwall(cx,cy):
+    # To check whtether splite can move more
+    # If can move, return 0, cannot , return more than 1
+
     c = 0
+
     if cx < 0 or pyxel.width -8 < cx:
         c = c + 1
+        
     for cpx,cpy in chkpoint:
         xi = (cx + cpx)//8
         yi = (cy + cpy)//8
@@ -29,23 +36,39 @@ def update():
     global x,y,dx,dy,pldir
 
     if pyxel.btn(pyxel.KEY_LEFT):
-        dx = -2
+        
+        dx = -8
         pldir = -1
+
+
     elif pyxel.btn(pyxel.KEY_RIGHT):
-        dx = 2
+        
+        dx = 8
         pldir = 1
+
     else:
+
         dx = 0
     
     lr = pyxel.sgn(dx)
-    loop = abs(dx)
-    while 0 < loop :
-        if chkwall( x + lr, y) != 0:
-            dx = 0
-            break
 
-        x = x + lr
-        loop = loop -1
+    if chkwall( x + dx, y) != 0:
+        x = x
+        #移動先に床ブロックがある結局移動ゼロにする
+    
+    else:
+        x = x + dx
+        #移動先に床ブロックないときはそこに移動
+
+
+    #loop = abs(dx)
+    #while 0 < loop :
+        #if chkwall( x + lr, y) != 0:
+            #dx = 0
+            #break
+
+        #x = x + lr
+        #loop = loop -1
     
     return
 
@@ -56,3 +79,4 @@ def draw():
     return
 
 pyxel.run(update,draw)
+
