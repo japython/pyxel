@@ -12,7 +12,7 @@ class ImageEditor(EditorBase):
     Variables:
         color_var
         tool_var
-        image_no_var
+        image_index_var
         canvas_var
         focus_x_var
         focus_y_var
@@ -44,7 +44,13 @@ class ImageEditor(EditorBase):
         self.add_var_event_listener("canvas_var", "get", self.__on_canvas_get)
 
         # Initialize color picker
-        self._color_picker = ColorPicker(self, 11, 156, 7, with_shadow=False)
+        self._color_picker = ColorPicker(
+            self,
+            11,
+            156,
+            min(7, len(pyxel.colors) - pyxel.NUM_COLORS - 1),
+            with_shadow=False,
+        )
         self._color_picker.add_event_listener(
             "mouse_hover", self.__on_color_picker_mouse_hover
         )
@@ -68,8 +74,11 @@ class ImageEditor(EditorBase):
         self._image_picker = NumberPicker(
             self, 192, 161, min_value=0, max_value=pyxel.NUM_IMAGES - 1, value=0
         )
+        self._image_picker.add_event_listener(
+            "mouse_hover", self.__on_image_picker_mouse_hover
+        )
         self.add_number_picker_help(self._image_picker)
-        self.copy_var("image_no_var", self._image_picker, "value_var")
+        self.copy_var("image_index_var", self._image_picker, "value_var")
 
         # Initialize image viewer
         self._image_viewer = ImageViewer(self)
@@ -87,27 +96,42 @@ class ImageEditor(EditorBase):
         self.add_event_listener("draw", self.__on_draw)
 
     def __on_canvas_get(self, value):
-        return pyxel.image(self.image_no_var)
+        return pyxel.images[self.image_index_var]
 
     def __on_color_picker_mouse_hover(self, x, y):
         self.help_message_var = "COLOR:1-8/SHIFT+1-8"
 
+    def __on_image_picker_mouse_hover(self, x, y):
+        self.help_message_var = "COPY_ALL:CTRL+SHIFT+C/X/V"
+
     def __on_undo(self, data):
-        self.image_no_var = data["image_no"]
-        self.focus_x_var, self.focus_y_var = data["focus_pos"]
-        self.canvas_var.set_slice(
-            self.focus_x_var * 8, self.focus_y_var * 8, data["old_canvas"]
-        )
+        self.image_index_var = data["image_index"]
+        if "old_data" in data:
+            pyxel.images[self.image_index_var].set_slice(0, 0, data["old_data"])
+        else:
+            self.focus_x_var, self.focus_y_var = data["focus_pos"]
+            self.canvas_var.set_slice(
+                self.focus_x_var * 8, self.focus_y_var * 8, data["old_canvas"]
+            )
 
     def __on_redo(self, data):
-        self.image_no_var = data["image_no"]
-        self.focus_x_var, self.focus_y_var = data["focus_pos"]
-        self.canvas_var.set_slice(
-            self.focus_x_var * 8, self.focus_y_var * 8, data["new_canvas"]
-        )
+        self.image_index_var = data["image_index"]
+        if "new_data" in data:
+            pyxel.images[self.image_index_var].set_slice(0, 0, data["new_data"])
+        else:
+            self.focus_x_var, self.focus_y_var = data["focus_pos"]
+            self.canvas_var.set_slice(
+                self.focus_x_var * 8, self.focus_y_var * 8, data["new_canvas"]
+            )
 
     def __on_drop(self, filename):
-        pyxel.image(self.image_no_var).load(0, 0, filename)
+        colors = pyxel.colors.to_list()
+        user_colors = colors[pyxel.NUM_COLORS :]
+        pyxel.colors.from_list(user_colors)
+        pyxel.images[self.image_index_var].load(
+            self.focus_x_var * 8, self.focus_y_var * 8, filename
+        )
+        pyxel.colors.from_list(colors)
 
     def __on_update(self):
         self.check_tool_button_shortcuts()

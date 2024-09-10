@@ -1,10 +1,11 @@
-name: Build
+name: build
 
 on: [workflow_call, workflow_dispatch]
 
 jobs:
   build-winmac:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - target: x86_64-pc-windows-msvc
@@ -46,7 +47,7 @@ jobs:
           architecture: ${{ matrix.arch }}
 
       - name: Install Python packages
-        run: pip install -r requirements.txt
+        run: pip install -r python/requirements.txt
 
       - name: Build wheels
         run: make TARGET=${{ matrix.target }}
@@ -59,6 +60,7 @@ jobs:
 
   build-linux:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - target: x86_64-unknown-linux-gnu
@@ -69,6 +71,9 @@ jobs:
 
           - target: aarch64-unknown-linux-gnu
             image: messense/manylinux2014-cross:aarch64
+
+          - target: armv7-unknown-linux-gnueabihf
+            image: messense/manylinux2014-cross:armv7l
 
     runs-on: ubuntu-22.04
     container: ${{ matrix.image }}
@@ -94,11 +99,11 @@ jobs:
           python-version: "3.10"
 
       - name: Install Python packages
-        run: pip install -r requirements.txt
+        run: pip install -r python/requirements.txt
 
       - name: Build and install SDL2
         run: |
-          export SDL2_VERSION=2.24.0
+          SDL2_VERSION=2.0.10
           export CC=$TARGET_CC
           export AR=$TARGET_AR
           export RANLIB=$TARGET_RANLIB
@@ -108,14 +113,15 @@ jobs:
           CFLAGS="-O3 -fPIC" ./configure \
             --build=x86_64-unknown-linux-gnu \
             --host=${{ matrix.target }} \
-            --prefix=/usr/${{ matrix.target }}/
+            --prefix=/usr/${{ matrix.target }}
           make -j4
-          make -j4 install
+          make install
           cd ..
           rm -rf SDL2-${SDL2_VERSION}
 
       - name: Build wheels
         run: |
+          export BINDGENFLAGS="-I/usr/${{ matrix.target }}/include/SDL2 -I/usr/${{ matrix.target }}/${{ matrix.target }}/sysroot/usr/include"
           export RUSTFLAGS="-L/usr/${{ matrix.target }}/lib"
           make TARGET=${{ matrix.target }}
 

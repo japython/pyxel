@@ -31,24 +31,34 @@ bullets = []
 blasts = []
 
 
-def update_list(list):
-    for elem in list:
-        elem.update()
+def update_entities(entities):
+    for entity in entities:
+        entity.update()
 
 
-def draw_list(list):
-    for elem in list:
-        elem.draw()
+def draw_entities(entities):
+    for entity in entities:
+        entity.draw()
 
 
-def cleanup_list(list):
-    i = 0
-    while i < len(list):
-        elem = list[i]
-        if not elem.is_alive:
-            list.pop(i)
-        else:
-            i += 1
+def cleanup_entities(entities):
+    for i in range(len(entities) - 1, -1, -1):
+        if not entities[i].is_alive:
+            del entities[i]
+
+
+def load_bgm(msc, filename, snd1, snd2, snd3):
+    # Loads a json file for 8bit BGM generator by frenchbread.
+    # Each track is stored in snd1, snd2 and snd3 of the sound
+    # respectively and registered in msc of the music.
+    import json
+
+    with open(filename, "rt") as file:
+        bgm = json.loads(file.read())
+        pyxel.sounds[snd1].set(*bgm[0])
+        pyxel.sounds[snd2].set(*bgm[1])
+        pyxel.sounds[snd3].set(*bgm[2])
+        pyxel.musics[msc].set([snd1], [snd2], [snd3])
 
 
 class Background:
@@ -71,7 +81,7 @@ class Background:
             self.stars[i] = (x, y, speed)
 
     def draw(self):
-        for (x, y, speed) in self.stars:
+        for x, y, speed in self.stars:
             pyxel.pset(x, y, STAR_COLOR_HIGH if speed > 1.8 else STAR_COLOR_LOW)
 
 
@@ -101,7 +111,7 @@ class Player:
             Bullet(
                 self.x + (PLAYER_WIDTH - BULLET_WIDTH) / 2, self.y - BULLET_HEIGHT / 2
             )
-            pyxel.play(0, 0)
+            pyxel.play(3, 0)
 
     def draw(self):
         pyxel.blt(self.x, self.y, 0, 0, 0, self.w, self.h, 0)
@@ -172,7 +182,7 @@ class Blast:
 class App:
     def __init__(self):
         pyxel.init(120, 160, title="Pyxel Shooter")
-        pyxel.image(0).set(
+        pyxel.images[0].set(
             0,
             0,
             [
@@ -186,7 +196,7 @@ class App:
                 "0c0880c0",
             ],
         )
-        pyxel.image(0).set(
+        pyxel.images[0].set(
             8,
             0,
             [
@@ -200,12 +210,15 @@ class App:
                 "80008000",
             ],
         )
-        pyxel.sound(0).set("a3a2c1a1", "p", "7", "s", 5)
-        pyxel.sound(1).set("a3a2c2c2", "n", "7742", "s", 10)
+        pyxel.sounds[0].set("a3a2c1a1", "p", "7", "s", 5)
+        pyxel.sounds[1].set("a3a2c2c2", "n", "7742", "s", 10)
+        load_bgm(0, "assets/bgm_title.json", 2, 3, 4)
+        load_bgm(1, "assets/bgm_play.json", 5, 6, 7)
         self.scene = SCENE_TITLE
         self.score = 0
         self.background = Background()
         self.player = Player(pyxel.width / 2, pyxel.height - 20)
+        pyxel.playm(0, loop=True)
         pyxel.run(self.update, self.draw)
 
     def update(self):
@@ -223,6 +236,7 @@ class App:
     def update_title_scene(self):
         if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_X):
             self.scene = SCENE_PLAY
+            pyxel.playm(1, loop=True)
 
     def update_play_scene(self):
         if pyxel.frame_count % 6 == 0:
@@ -241,7 +255,7 @@ class App:
                     blasts.append(
                         Blast(enemy.x + ENEMY_WIDTH / 2, enemy.y + ENEMY_HEIGHT / 2)
                     )
-                    pyxel.play(1, 1)
+                    pyxel.play(2, 1, resume=True)
                     self.score += 10
 
         for enemy in enemies:
@@ -258,24 +272,25 @@ class App:
                         self.player.y + PLAYER_HEIGHT / 2,
                     )
                 )
-                pyxel.play(1, 1)
+                pyxel.stop()
+                pyxel.play(3, 1)
                 self.scene = SCENE_GAMEOVER
 
         self.player.update()
-        update_list(bullets)
-        update_list(enemies)
-        update_list(blasts)
-        cleanup_list(enemies)
-        cleanup_list(bullets)
-        cleanup_list(blasts)
+        update_entities(bullets)
+        update_entities(enemies)
+        update_entities(blasts)
+        cleanup_entities(enemies)
+        cleanup_entities(bullets)
+        cleanup_entities(blasts)
 
     def update_gameover_scene(self):
-        update_list(bullets)
-        update_list(enemies)
-        update_list(blasts)
-        cleanup_list(enemies)
-        cleanup_list(bullets)
-        cleanup_list(blasts)
+        update_entities(bullets)
+        update_entities(enemies)
+        update_entities(blasts)
+        cleanup_entities(enemies)
+        cleanup_entities(bullets)
+        cleanup_entities(blasts)
 
         if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_X):
             self.scene = SCENE_PLAY
@@ -285,6 +300,7 @@ class App:
             enemies.clear()
             bullets.clear()
             blasts.clear()
+            pyxel.playm(1, loop=True)
 
     def draw(self):
         pyxel.cls(0)
@@ -303,14 +319,14 @@ class App:
 
     def draw_play_scene(self):
         self.player.draw()
-        draw_list(bullets)
-        draw_list(enemies)
-        draw_list(blasts)
+        draw_entities(bullets)
+        draw_entities(enemies)
+        draw_entities(blasts)
 
     def draw_gameover_scene(self):
-        draw_list(bullets)
-        draw_list(enemies)
-        draw_list(blasts)
+        draw_entities(bullets)
+        draw_entities(enemies)
+        draw_entities(blasts)
         pyxel.text(43, 66, "GAME OVER", 8)
         pyxel.text(31, 126, "- PRESS ENTER -", 13)
 

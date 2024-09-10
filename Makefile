@@ -1,12 +1,12 @@
 #
 # [How to build]
 #
-# Required tools:
+# Required Tools:
 #	- git
 #	- make
 #	- cmake
 #	- rustup
-#	- python 3.7+
+#	- python 3.8+
 #
 #	[Windows]
 #	- Git Bash
@@ -14,44 +14,51 @@
 #	[Linux]
 #	- python3-pip
 #	- python3-venv
-#	- libsdl2-dev
+#	- libsdl2-dev 2.28.4
 #
-#	[WASM]
-#	- Emscripten 3.1.29
+#	[Web]
+#	- Emscripten 3.1.61 (does not work with 3.1.62+)
 #
-# Advance preparation:
+# Advance Preparation:
 #	rustup install nightly
 #	git clone --depth=1 https://github.com/kitao/pyxel
 #	cd pyxel
 #	(Create and activate a venv if you prefer)
-#	pip3 install -r requirements.txt
+#	pip3 install -r python/requirements.txt
 #
-# Build the package in the dist directory
+# Build for Current Environment:
 #	make clean build
+#	(Generates Python wheel in dist/ directory)
 #
-# Build the package for the specified target:
+# Build for Specified Target:
 #	make clean build TARGET=target_triple
 #
-# Build, install, and test the package in the current Python
+# Build for Specified Target:
+#	make clean build TARGET=target_triple
+#
+# Build and Install in Current Python:
+#	make clean install
+#
+# Build, Install, and Test in Current Python:
 #	make clean test
 #
-# Build the package for WASM in the dist directory
+# Build for Web:
 #	make clean-wasm build-wasm
 #
-# Test the package for WASM in localhost:8000/wasm/
+# Test for Web:
 #	make clean-wasm test-wasm
+#	(Open localhost:8000/wasm/ in a web browser)
 #
 
 ROOT_DIR = .
 DIST_DIR = $(ROOT_DIR)/dist
-PYXEL_DIR = $(ROOT_DIR)/python/pyxel
-CRATES_DIR = $(ROOT_DIR)/crates
+RUST_DIR = $(ROOT_DIR)/rust
+PYTHON_DIR = $(ROOT_DIR)/python
+EXAMPLES_DIR = $(PYTHON_DIR)/pyxel/examples
 SCRIPTS_DIR = $(ROOT_DIR)/scripts
-EXAMPLES_DIR = $(PYXEL_DIR)/examples
 WASM_DIR = $(ROOT_DIR)/wasm
 WASM_ENV = RUSTUP_TOOLCHAIN=nightly
 WASM_TARGET = wasm32-unknown-emscripten
-CLIPPY_OPTS = -q --all-targets --all-features -- --no-deps
 
 ifeq ($(TARGET),)
 ENSURE_TARGET =
@@ -61,41 +68,45 @@ ENSURE_TARGET = rustup target add $(TARGET)
 BUILD_OPTS = --release --target $(TARGET)
 endif
 
-.PHONY: all clean distclean lint format build test clean-wasm build-wasm test-wasm
+.PHONY: \
+	all clean distclean lint update format build install test \
+	clean-wasm build-wasm fetch-remote-wasm start-test-server test-wasm test-remote-wasm
 
 all: build
 
 clean:
-	@cd $(CRATES_DIR)/pyxel-core; cargo clean $(BUILD_OPTS)
-	@cd $(CRATES_DIR)/pyxel-extension; cargo clean $(BUILD_OPTS)
+	@cd $(RUST_DIR); cargo clean $(BUILD_OPTS)
 
 distclean:
 	@rm -rf $(DIST_DIR)
-	@rm -rf $(CRATES_DIR)/pyxel-core/target
-	@rm -rf $(CRATES_DIR)/pyxel-extension/target
+	@rm -rf $(RUST_DIR)/target
 
 lint:
-	@cd $(CRATES_DIR)/pyxel-core; cargo clippy $(CLIPPY_OPTS)
-	@cd $(CRATES_DIR)/pyxel-core; $(WASM_ENV) cargo clippy --target $(WASM_TARGET) $(CLIPPY_OPTS)
-	@cd $(CRATES_DIR)/pyxel-extension; cargo clippy $(CLIPPY_OPTS)
-	@cd $(CRATES_DIR)/pyxel-extension; $(WASM_ENV) cargo clippy --target $(WASM_TARGET) $(CLIPPY_OPTS)
-	@flake8 $(SCRIPTS_DIR) $(PYXEL_DIR)
+	@cd $(RUST_DIR); cargo +nightly clippy -q --all-targets --all-features -- --no-deps
+	@cd $(RUST_DIR); cargo +nightly clippy --target $(WASM_TARGET) -q --all-targets --all-features -- --no-deps
+	@ruff check $(ROOT_DIR)
+
+update:
+	@rustup -q update
+	@cd $(RUST_DIR); cargo -q update
+	@cd $(RUST_DIR); cargo -q outdated --root-deps-only
+	@pip3 -q install -U -r $(PYTHON_DIR)/requirements.txt
 
 format:
-	@cd $(CRATES_DIR)/pyxel-core; cargo +nightly fmt -- --emit=files
-	@cd $(CRATES_DIR)/pyxel-extension; cargo +nightly fmt -- --emit=files
-	@isort $(ROOT_DIR)
-	@black $(ROOT_DIR)
+	@cd $(RUST_DIR); cargo +nightly fmt -- --emit=files
+	@ruff format $(ROOT_DIR)
 
 build: format
 	@$(ENSURE_TARGET)
 	@$(SCRIPTS_DIR)/make_abspath_readme
-	@maturin build -o $(DIST_DIR) $(BUILD_OPTS) --manylinux 2014 --skip-auditwheel
+	@cd $(PYTHON_DIR); maturin build -o ../$(DIST_DIR) $(BUILD_OPTS) --manylinux 2014 --skip-auditwheel
 
-test: build
-	@cd $(CRATES_DIR)/pyxel-core; cargo test $(BUILD_OPTS)
+install: build
 	@pip3 install --force-reinstall `ls -rt $(DIST_DIR)/*.whl | tail -n 1`
-	@python3 -m unittest discover $(CRATES_DIR)/pyxel-extension/tests
+
+test: install
+	#@cd $(RUST_DIR); cargo test $(BUILD_OPTS)
+	@python3 -m unittest discover $(RUST_DIR)/pyxel-wrapper/tests
 	@pyxel run $(EXAMPLES_DIR)/01_hello_pyxel.py
 	@pyxel run $(EXAMPLES_DIR)/02_jump_game.py
 	@pyxel run $(EXAMPLES_DIR)/03_draw_api.py
@@ -109,9 +120,13 @@ test: build
 	@pyxel run $(EXAMPLES_DIR)/11_offscreen.py
 	@pyxel run $(EXAMPLES_DIR)/12_perlin_noise.py
 	@pyxel run $(EXAMPLES_DIR)/13_bitmap_font.py
+	@pyxel run $(EXAMPLES_DIR)/14_synthesizer.py
+	@pyxel run $(EXAMPLES_DIR)/15_tiled_map_file.py
+	@pyxel run $(EXAMPLES_DIR)/16_transform.py
 	@pyxel run $(EXAMPLES_DIR)/99_flip_animation.py
 	@pyxel play $(EXAMPLES_DIR)/30SecondsOfDaylight.pyxapp
 	@pyxel play $(EXAMPLES_DIR)/megaball.pyxapp
+	@pyxel play $(EXAMPLES_DIR)/8bit-bgm-gen.pyxapp
 	@pyxel edit $(EXAMPLES_DIR)/assets/sample.pyxres
 	@rm -rf testapp testapp.pyxapp
 	@mkdir -p testapp/assets
@@ -126,13 +141,20 @@ clean-wasm:
 	@$(WASM_ENV) make clean TARGET=$(WASM_TARGET)
 
 build-wasm:
+	@embuilder build sdl2 --pic
 	@rm -f $(DIST_DIR)/*-emscripten_*.whl
 	@$(WASM_ENV) make build TARGET=$(WASM_TARGET)
-	@$(SCRIPTS_DIR)/update_wasm_wheel
+	@$(SCRIPTS_DIR)/install_wasm_wheel
 
-test-wasm: build-wasm
+fetch-remote-wasm:
+	@rm -f $(DIST_DIR)/*-emscripten_*.whl
+	@$(SCRIPTS_DIR)/download_wasm_wheel
+	@$(SCRIPTS_DIR)/install_wasm_wheel
+
+start-test-server:
 	$(SCRIPTS_DIR)/switch_html_scripts local
-	@bash -c " \
-		trap '$(SCRIPTS_DIR)/switch_html_scripts cdn' INT TERM; \
-		$(SCRIPTS_DIR)/start_test_server \
-	"
+	@bash -c "trap '$(SCRIPTS_DIR)/switch_html_scripts cdn' INT TERM; $(SCRIPTS_DIR)/start_test_server"
+
+test-wasm: build-wasm start-test-server
+
+test-remote-wasm: fetch-remote-wasm start-test-server

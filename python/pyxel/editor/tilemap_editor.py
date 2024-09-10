@@ -13,12 +13,12 @@ class TilemapEditor(EditorBase):
     Variables:
         color_var
         tool_var
-        image_no_var
+        image_index_var
         canvas_var
         focus_x_var
         focus_y_var
 
-        tilemap_no_var
+        tilemap_index_var
         tile_x_var
         tile_y_var
         tile_w_var
@@ -61,8 +61,11 @@ class TilemapEditor(EditorBase):
         self._tilemap_picker.add_event_listener(
             "change", self.__on_tilemap_picker_change
         )
+        self._tilemap_picker.add_event_listener(
+            "mouse_hover", self.__on_tilemap_picker_mouse_hover
+        )
         self.add_number_picker_help(self._tilemap_picker)
-        self.copy_var("tilemap_no_var", self._tilemap_picker, "value_var")
+        self.copy_var("tilemap_index_var", self._tilemap_picker, "value_var")
 
         # Initialize tilemap viewer
         self._tilemap_viewer = TilemapViewer(self)
@@ -76,11 +79,11 @@ class TilemapEditor(EditorBase):
             161,
             min_value=0,
             max_value=pyxel.NUM_IMAGES - 1,
-            value=pyxel.tilemap(self.tilemap_no_var).refimg,
+            value=pyxel.tilemaps[self.tilemap_index_var].imgsrc,
         )
         self._image_picker.add_event_listener("change", self.__on_image_picker_change)
         self.add_number_picker_help(self._image_picker)
-        self.copy_var("image_no_var", self._image_picker, "value_var")
+        self.copy_var("image_index_var", self._image_picker, "value_var")
 
         # Initialize image viewer
         self._image_viewer = ImageViewer(self)
@@ -95,30 +98,47 @@ class TilemapEditor(EditorBase):
         # Set event listeners
         self.add_event_listener("undo", self.__on_undo)
         self.add_event_listener("redo", self.__on_redo)
+        self.add_event_listener("drop", self.__on_drop)
         self.add_event_listener("update", self.__on_update)
         self.add_event_listener("draw", self.__on_draw)
 
     def __on_canvas_get(self, value):
-        return pyxel.tilemap(self.tilemap_no_var)
+        return pyxel.tilemaps[self.tilemap_index_var]
 
     def __on_tilemap_picker_change(self, value):
-        self.image_no_var = pyxel.tilemap(value).refimg
+        self.image_index_var = pyxel.tilemaps[value].imgsrc
+
+    def __on_tilemap_picker_mouse_hover(self, x, y):
+        self.help_message_var = "COPY_ALL:CTRL+SHIFT+C/X/V"
 
     def __on_image_picker_change(self, value):
-        pyxel.tilemap(self.tilemap_no_var).refimg = value
+        pyxel.tilemaps[self.tilemap_index_var].imgsrc = value
 
     def __on_undo(self, data):
-        self.tilemap_no_var = data["tilemap_no"]
-        self.focus_x_var, self.focus_y_var = data["focus_pos"]
-        self.canvas_var.set_slice(
-            self.focus_x_var * 8, self.focus_y_var * 8, data["old_canvas"]
-        )
+        self.tilemap_index_var = data["tilemap_index"]
+        if "old_data" in data:
+            pyxel.tilemaps[self.tilemap_index_var].set_slice(0, 0, data["old_data"])
+            self.image_index_var = data["old_imgsrc"]
+        else:
+            self.focus_x_var, self.focus_y_var = data["focus_pos"]
+            self.canvas_var.set_slice(
+                self.focus_x_var * 8, self.focus_y_var * 8, data["old_canvas"]
+            )
 
     def __on_redo(self, data):
-        self.tilemap_no_var = data["tilemap_no"]
-        self.focus_x_var, self.focus_y_var = data["focus_pos"]
-        self.canvas_var.set_slice(
-            self.focus_x_var * 8, self.focus_y_var * 8, data["new_canvas"]
+        self.tilemap_index_var = data["tilemap_index"]
+        if "new_data" in data:
+            pyxel.tilemaps[self.tilemap_index_var].set_slice(0, 0, data["new_data"])
+            self.image_index_var = data["new_imgsrc"]
+        else:
+            self.focus_x_var, self.focus_y_var = data["focus_pos"]
+            self.canvas_var.set_slice(
+                self.focus_x_var * 8, self.focus_y_var * 8, data["new_canvas"]
+            )
+
+    def __on_drop(self, filename):
+        pyxel.tilemaps[self.tilemap_index_var].load(
+            self.focus_x_var * 8, self.focus_y_var * 8, filename, self.tilemap_index_var
         )
 
     def __on_update(self):

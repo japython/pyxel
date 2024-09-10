@@ -7,13 +7,13 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H27VDKD)
 
-[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) ]
+[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) | [Türkçe](README.tr.md) | [Українська](README.uk.md) ]
 
 **Pyxel**是一个 python 的经典像素风游戏制作引擎。
 
-由于像素风游戏的机制非常简单（如：最多只能显示 16 种颜色、播放 4 种声音等），现在你也可以轻松地享受这种游戏的制作过程。
+由于像素风游戏的机制非常简单 (如：最多只能显示 16 种颜色、播放 4 种声音等)，现在你也可以轻松地享受这种游戏的制作过程。
 
-<img src="images/pyxel_300000_downloads.gif" width="480">
+<img src="images/pyxel_message.png" width="480">
 
 Pyxel 开发的动力来自于用户的反馈。请在 GitHub 上给 Pyxel 一颗星吧！
 
@@ -64,7 +64,7 @@ Pyxel 是开源的，大家可以免费使用。现在就让我们一起用 Pyxe
 
 ### Windows
 
-在安装[Python3](https://www.python.org/)（3.7 或更高版本）之后，执行以下命令：
+在安装[Python3](https://www.python.org/) (3.8 或更高版本) 之后，执行以下命令：
 
 ```sh
 pip install -U pyxel
@@ -74,17 +74,19 @@ pip install -U pyxel
 
 ### Mac
 
-在安装[Python3](https://www.python.org/)（3.7 或更高版本）之后，执行以下命令：
+安装 [Homebrew](https://brew.sh/) 后，运行以下命令：
 
 ```sh
-python3 -m pip install -U pyxel
+brew install pipx
+pipx ensurepath
+pipx install pyxel
 ```
 
-如果你使用默认安装在 Mac 上的 Python3，请在上述命令的开头添加`sudo`以启用`pyxel`命令。
+要在安装 Pyxel 后更新版本，请运行 `pipx upgrade pyxel`。
 
 ### Linux
 
-安装 SDL2（Ubuntu 下包名为：`libsdl2-dev`），[Python3](https://www.python.org/)（3.7 或更高版本），以及`python3-pip`这三个包之后，执行以下命令：
+安装 SDL2 (Ubuntu 下包名为：`libsdl2-dev`)，[Python3](https://www.python.org/) (3.8 或更高版本)，以及`python3-pip`这三个包之后，执行以下命令：
 
 ```sh
 sudo pip3 install -U pyxel
@@ -188,22 +190,46 @@ pyxel copy_examples
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py">Code</a></td>
 </tr>
 <tr>
+<td>14_synthesizer.py</td>
+<td>利用音频扩展功能的合成器</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/14_synthesizer.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/14_synthesizer.py">Code</a></td>
+</tr>
+<tr>
+<td>15_tiled_map_file.py</td>
+<td>加载和绘制磁贴地图文件 (.tmx)</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py">Code</a></td>
+</tr>
+<tr>
+<td>16_transform.py</td>
+<td>图像旋转和缩放</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/16_transform.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py">Code</a></td>
+</tr>
+<tr>
 <td>99_flip_animation.py</td>
-<td>具有 flip 功能的动画（仅在非网络平台上）</td>
+<td>具有 flip 功能的动画 (仅在非网络平台上)</td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/docs/images/99_flip_animation.gif">Demo</a></td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/99_flip_animation.py">Code</a></td>
 </tr>
 <tr>
 <td>30SecondsOfDaylight.pyxapp</td>
-<td>第 1 届 Pyxel Jam 比赛获胜者是Adam</td>
+<td>第 1 届 Pyxel Jam 比赛获胜者是<a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/30SecondsOfDaylight.html">Demo</a></td>
 <td><a href="https://github.com/kitao/30SecondsOfDaylight">Code</a></td>
 </tr>
 <tr>
 <td>megaball.pyxapp</td>
-<td>商场球类物理游戏Adam</td>
+<td>商场球类物理游戏<a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/megaball.html">Demo</a></td>
 <td><a href="https://github.com/helpcomputer/megaball">Code</a></td>
+</tr>
+<tr>
+<td>8bit-bgm-gen.pyxapp</td>
+<td>背景音乐生成器由<a href="https://x.com/frenchbread1222">frenchbread</a>制作</a></td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/8bit-bgm-gen.html">Demo</a></td>
+<td><a href="https://github.com/shiromofufactory/8bit-bgm-generator">Code</a></td>
 </tr>
 </table>
 
@@ -273,19 +299,25 @@ pyxel.show()
 
 ### 运行 Pyxel 应用
 
-创建的 Python 脚本可以使用以下命令执行：
+创建的 Python 脚本可使用`python`命令执行：
+
+```sh
+python PYTHON_SCRIPT_FILE
+```
+
+也可以使用`pyxel run`命令运行：
 
 ```sh
 pyxel run PYTHON_SCRIPT_FILE
 ```
 
-它也可以像普通的 Python 脚本一样被执行：
+此外，`pyxel watch`命令可以监控指定目录中的变化，并在检测到变化时自动重新运行程序：
 
 ```sh
-python3 PYTHON_SCRIPT_FILE
+pyxel watch WATCH_DIR PYTHON_SCRIPT_FILE
 ```
 
-（在 Windows 中，使用`python`命令来替代`python3`）
+按`Ctrl(Command)+C`键可停止目录监控。
 
 ### 快捷键
 
@@ -298,11 +330,17 @@ python3 PYTHON_SCRIPT_FILE
 - `Alt(Option)+2`<br>
   重置屏幕录制的开始时间
 - `Alt(Option)+3`<br>
-  保存屏幕录制动图到桌面（最多 10 秒）
+  保存屏幕录制动图到桌面 (最多 10 秒)
+- `Alt(Option)+9`<br>
+  切换屏幕模式 (Crisp/Smooth/Retro)
 - `Alt(Option)+0`<br>
-  切换性能监控（fps，更新时间，画面绘制时间）
+  切换性能监控 (fps，更新时间，画面绘制时间)
 - `Alt(Option)+Enter`<br>
   切换全屏
+- `Shift+Alt(Option)+1/2/3`<br>
+  将相应的图像库保存到桌面
+- `Shift+Alt(Option)+0`<br>
+  将当前调色板保存到桌面
 
 ### 如何创建源文件
 
@@ -314,17 +352,15 @@ Pyxel 编辑器使用以下命令启动：
 pyxel edit PYXEL_RESOURCE_FILE
 ```
 
-若指定 Pyxel 源文件（.pyxres）存在，则加载文件，若不存在，则以指定文件名新建文件。
+若指定 Pyxel 源文件 (.pyxres) 存在，则加载文件，若不存在，则以指定文件名新建文件。若未指定源文件，则命名为`my_resource.pyxres`。
 
-若未指定源文件，则命名为`my_resource.pyxres`。
-
-Pyxel 编辑器启动后，可以拖放其他源文件进行切换。如果源文件被拖拽并在按下`Ctrl(Cmd)`键时释放，则只有当前正在编译的类型（图像、瓦片地图、音效、音乐）会被加载。这个操作允许将多种类型的源文件合并入一个源文件中。
+Pyxel 编辑器启动后，可以拖放其他源文件进行切换。
 
 创建的源文件可以使用`load`函数加载。
 
 Pyxel 编辑器有以下编辑模式。
 
-**图像编辑器：**
+**图像编辑器**
 
 此模式用来编辑图像库。
 
@@ -332,9 +368,9 @@ Pyxel 编辑器有以下编辑模式。
 <img src="images/image_editor.gif">
 </a>
 
-通过将图像文件拖放进图像编辑器，图像可以加载进当前的图像库中。
+将图像文件 (PNG/GIF/JPEG) 拖放到图像编辑器上，即可将图像加载到当前选定的图像库中。
 
-**瓦片地图(Tilemap)编辑器：**
+**瓦片地图编辑器**
 
 此模式用来编辑瓦片地图，其中图像库的图像以瓦片的样式排列。
 
@@ -342,7 +378,9 @@ Pyxel 编辑器有以下编辑模式。
 <img src="images/tilemap_editor.gif">
 </a>
 
-**音频编辑器：**
+将 TMX 文件 (Tiled Map File) 拖放到平铺贴图编辑器上，即可按照与当前所选平铺贴图编号相对应的绘图顺序加载其图层。
+
+**音频编辑器**
 
 此模式用来编辑音频。
 
@@ -350,7 +388,7 @@ Pyxel 编辑器有以下编辑模式。
 <img src="images/sound_editor.gif">
 </a>
 
-**音乐编辑器：**
+**音乐编辑器**
 
 此模式用来编辑将录音有序编排形成的音乐。
 
@@ -363,7 +401,7 @@ Pyxel 编辑器有以下编辑模式。
 Pyxel 图像和瓦片地图也可以通过以下方法创建：
 
 - 使用`Image.set`或`Tilemap.set`函数，从字符串列表创建图片
-- 使用`Image.load`函数从加载图像文件至 pyxel 调色板中
+- 使用 `Image.load` 函数在 Pyxel 调色板中加载图像文件 (PNG/GIF/JPEG)
 
 Pyxel 声音也可以通过以下方法创建：
 
@@ -373,9 +411,9 @@ Pyxel 声音也可以通过以下方法创建：
 
 ### 如何发布应用
 
-Pyxel 支持跨平台的应用文件格式（Pyxel 应用文件）。
+Pyxel 支持跨平台的应用文件格式 (Pyxel 应用文件)。
 
-使用以下命令创建 Pyxel 应用文件（.pyxapp）：
+使用 `pyxel package` 命令创建 Pyxel 应用程序文件 (.pyxapp)：
 
 ```sh
 pyxel package APP_DIR STARTUP_SCRIPT_FILE
@@ -383,7 +421,7 @@ pyxel package APP_DIR STARTUP_SCRIPT_FILE
 
 如果应用程序应包括资源或其他模块，请将它们放在应用程序目录中。
 
-创建好的应用文件使用以下命令执行：
+使用 `pyxel play` 命令执行创建的应用程序文件：
 
 ```sh
 pyxel play PYXEL_APP_FILE
@@ -395,14 +433,14 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
 
 ### 系统
 
-- `width`, `height`<br>
+- `width`，`height`<br>
   画面的宽和高
 
 - `frame_count`<br>
   目前为止，经过的总帧数
 
 - `init(width, height, [title], [fps], [quit_key], [display_scale], [capture_scale], [capture_sec])`<br>
-  使用屏幕尺寸（`width`，`height`）初始化 Pyxel 应用。以下属性为可选配置项：窗口标题`title`，帧率`fps`，应用退出按键`quit_key`, 用 "display_scale "来决定显示的比例, 用 "capture_scale "来决定屏幕捕捉的比例，以及屏幕捕获的最长记录时间`capture_sec`。<br>
+  使用屏幕尺寸 (`width`，`height`) 初始化 Pyxel 应用。以下属性为可选配置项：窗口标题`title`，帧率`fps`，应用退出按键`quit_key`，用 "display_scale "来决定显示的比例，用 "capture_scale "来决定屏幕捕捉的比例，以及屏幕捕获的最长记录时间`capture_sec`。<br>
   示例：`pyxel.init(160, 120, title="My Pyxel App", fps=60, quit_key=pyxel.KEY_NONE, capture_scale=3, capture_sec=0)`
 
 - `run(update, draw)`<br>
@@ -412,26 +450,26 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
   显示屏幕直到`Esc`键被按下。
 
 - `flip()`<br>
-  将屏幕重新调整一帧。当按下`Esc`键时，应用程序退出。这个功能只在非网络平台上工作。
+  将屏幕重新调整一帧。当按下`Esc`键时，应用程序退出。该功能在网络版中不起作用。
 
 - `quit()`<br>
   退出 Pyxel 应用。
 
 ### 源文件
 
-- `load(filename, [image], [tilemap], [sound], [music])`<br>
-  加载源文件(.pyxres)。如果某文件类型(`image/tilemap/sound/music`)被指定为`False`，则源文件中对应类型不会加载。如果在与资源文件相同的位置存在一个同名的调色板文件（.pyxpal），调色板的显示颜色也将被改变。调色板文件是一个显示颜色的十六进制条目，用换行符分隔。调色板文件也可以用来改变 Pyxel Editor 中显示的颜色。
+- `load(filename, [excl_images], [excl_tilemaps], [excl_sounds], [excl_musics])`<br>
+  加载源文件 (.pyxres)。如果选项为`True`，则不会加载资源。如果在资源文件的同一位置存在同名的调色板文件 (.pyxpal)，调色板的显示颜色也将改变。调色板文件是显示颜色的十六进制条目 (如 `1100FF`)，以换行分隔。调色板文件也可用于更改 Pyxel 编辑器中显示的颜色。
 
 ### 输入
 
-- `mouse_x`, `mouse_y`<br>
+- `mouse_x`，`mouse_y`<br>
   当前鼠标指针的位置。
 
 - `mouse_wheel`<br>
   当前鼠标滚轮的值。
 
 - `btn(key)`<br>
-  如果`key`被按下则返回`True`，否则返回`False`([按键定义列表](../python/pyxel/__init__.pyi))。
+  如果`key`被按下则返回`True`，否则返回`False`。([按键定义列表](../python/pyxel/__init__.pyi))。
 
 - `btnp(key, [hold], [repeat])`<br>
   如果`key`被按下则返回`True`。若设置了`hold`和`repeat`参数，则当`key`被按下持续`hold`帧时，在`repeat`帧间隙返回`True`。
@@ -448,94 +486,97 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
   展示调色板可以显示的颜色列表。颜色以 24 位数值格式进行展示。使用`colors.from_list`和`colors.to_list`直接指定货检索 Python 列表。<br>
   示例：`old_colors = pyxel.colors.to_list(); pyxel.colors.from_list([0x111111, 0x222222, 0x333333]); pyxel.colors[15] = 0x112233`
 
-- `image(img)`<br>
-  直接操作图像库`img` (0-2)。（参考前文 Image 类）<br>
-  示例：`pyxel.image(0).load(0, 0, "title.png")`
+- `images`<br>
+  图像库列表 (0-2)。 (参考前文 Image 类)<br>
+  示例：`pyxel.images[0].load(0, 0, "title.png")`
 
-- `tilemap(tm)`<br>
-  操作瓦片地图`tm`(0-7)（参考前文 Tilemap 类）
+- `tilemaps`<br>
+  瓦片贴图列表 (0-7)。 (参考前文 Tilemap 类)
 
 - `clip(x, y, w, h)`<br>
-  设置画面绘制区域为从(`x`, `y`)开始的宽度`w`、高度为`h`的区域。`clip()`可以将绘制区域重置为全屏。
+  设置画面绘制区域为从 (`x`, `y`) 开始的宽度`w`、高度为`h`的区域。`clip()`可以将绘制区域重置为全屏。
 
 - `camera(x, y)`<br>
-  Change the upper left corner coordinates of the screen to (`x`, `y`). Reset the upper left corner coordinates to (`0`, `0`) with `camera()`.
+  更改视角等起始位置，使位置 (`x`, `y`) 成为屏幕左上角的起始位置，这将有助于切换视角。若想恢复起始位置，使用`camera()`或 `camera(0, 0)` 即可完成重置。
 
 - `pal(col1, col2)`<br>
   绘制时用`col1`颜色代替`col2`颜色。`pal()`可以重置为初始色调。
+
+- `dither(alpha)`<br>
+  在绘制时应用抖动 (伪透明)。在 0.0-1.0 的范围内设置 `alpha`，其中 0.0 表示透明，1.0 表示不透明。
 
 - `cls(col)`<br>
   用`col`颜色清空画面。
 
 - `pget(x, y)`<br>
-  获取(`x`, `y`)处的像素颜色。
+  获取 (`x`, `y`) 处的像素颜色。
 
 - `pset(x, y, col)`<br>
-  用`col`颜色在(`x`, `y`)处绘制一个像素点。
+  用`col`颜色在 (`x`, `y`) 处绘制一个像素点。
 
 - `line(x1, y1, x2, y2, col)`<br>
-  用`col`颜色画一条从(`x1`, `y1`)到(`x2`, `y2`)的直线。
+  用`col`颜色画一条从 (`x1`, `y1`) 到 (`x2`, `y2`) 的直线。
 
 - `rect(x, y, w, h, col)`<br>
-  用`col`颜色绘制一个从(`x`, `y`)开始的宽为`w`、高为`h`的矩形。
+  用`col`颜色绘制一个从 (`x`, `y`) 开始的宽为`w`、高为`h`的矩形。
 
 - `rectb(x, y, w, h, col)`<br>
-  用`col`颜色绘制从(`x`, `y`)开始的宽为`w`、高为`h`的矩形边框。
+  用`col`颜色绘制从 (`x`, `y`) 开始的宽为`w`、高为`h`的矩形边框。
 
 - `circ(x, y, r, col)`<br>
-  用`col`颜色绘制圆心为(`x`, `y`)，半径为`r`的圆形。
+  用`col`颜色绘制圆心为 (`x`, `y`)，半径为`r`的圆形。
 
 - `circb(x, y, r, col)`<br>
-  用`col`颜色绘制圆心为(`x`, `y`)，半径为`r`的圆形边框。
+  用`col`颜色绘制圆心为 (`x`, `y`)，半径为`r`的圆形边框。
 
 - `elli(x, y, w, h, col)`<br>
-  从(`x`, `y`)画一个宽度`w`, 高度`h`, 颜色`col`的椭圆。
+  从 (`x`, `y`) 画一个宽度`w`，高度`h`，颜色`col`的椭圆。
 
 - `ellib(x, y, w, h, col)`<br>
-  从(`x`, `y`)画出一个宽`w`, 高`h`, 颜色`col`的椭圆轮廓。
+  从 (`x`, `y`) 画出一个宽`w`，高`h`，颜色`col`的椭圆轮廓。
 
 - `tri(x1, y1, x2, y2, x3, y3, col)`<br>
-  用`col`颜色绘制顶点分别为(`x1`, `y1`)，(`x2`, `y2`)，(`x3`, `y3`)的三角形。
+  用`col`颜色绘制顶点分别为 (`x1`, `y1`)，(`x2`, `y2`)，(`x3`, `y3`) 的三角形。
 
 - `trib(x1, y1, x2, y2, x3, y3, col)`<br>
-  用`col`颜色绘制顶点分别为(`x1`, `y1`)，(`x2`, `y2`)，(`x3`, `y3`)的三角形边框。
+  用`col`颜色绘制顶点分别为 (`x1`, `y1`)，(`x2`, `y2`)，(`x3`, `y3`) 的三角形边框。
 
 - `fill(x, y, col)`<br>
-  从(`x`, `y`)画一个宽度`w`, 高度`h`, 颜色`col`的椭圆。
+  从 (`x`, `y`) 画一个宽度`w`，高度`h`，颜色`col`的椭圆。
 
-- `blt(x, y, img, u, v, w, h, [colkey])`<br>
-  将尺寸为(`w`, `h`)的区域从图像库的(`u`, `v`)复制到(`x`, `y`)。若`w`或`h`为负值，则在水平或垂直方向上翻转。若指定了`colkey`的值，则视作透明颜色。
+- `blt(x, y, img, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  将尺寸为 (`w`, `h`) 的区域从图像库的 (`u`, `v`) 复制到 (`x`, `y`)。若`w`或`h`为负值，则在水平或垂直方向上翻转。若指定了`colkey`的值，则视作透明颜色。如果指定了 `rotate`(度)、`scale`(1.0=100%) 或两者，则将应用相应的变换。
 
 <img src="images/blt_figure.png">
 
-- `bltm(x, y, tm, u, v, w, h, [colkey])`<br>
-  从瓦片图`tm`（0-7）的（`u`，`v`）复制大小为（`w`，`h`）的区域到（`x`，`y`）。如果为`w`和/或`h`设置了负值，它将在水平和/或垂直方向上反转。如果指定了 `colkey`，将被视为透明色。瓦片的大小是 8x8 像素，以`(tile_x, tile_y)`的元组形式存储在瓦片图中。
+- `bltm(x, y, tm, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  从瓦片图`tm` (0-7) 的 (`u`，`v`) 复制大小为 (`w`，`h`) 的区域到 (`x`，`y`)。如果为`w`和/或`h`设置了负值，它将在水平和/或垂直方向上反转。如果指定了 `colkey`，将被视为透明色。如果指定了 `rotate`(度)、`scale`(1.0=100%) 或两者，则将应用相应的变换。瓦片的大小是 8x8 像素，以`(tile_x, tile_y)`的元组形式存储在瓦片图中。
 
 <img src="images/bltm_figure.png">
 
 - `text(x, y, s, col)`<br>
-  用`col`颜色在(`x`, `y`)绘制字符串`s`。
+  用`col`颜色在 (`x`, `y`) 绘制字符串`s`。
 
 ### 声音
 
-- `sound(snd)`<br>
-  操作音频`snd`(0-63)。（参考 Sound 类）<br>
-  示例：`pyxel.sound(0).speed = 60`
+- `sounds`<br>
+  声音列表 (0-63)。 (参考 Sound 类)<br>
+  示例：`pyxel.sounds[0].speed = 60`
 
-- `music(msc)`<br>
-  操作音乐`msc`(0-7)（参考 Music 类）
+- `musics`<br>
+  音乐列表 (0-7)。 (参考 Music 类)
 
-- `play_pos(ch)`<br>
-  获取通道`ch` (0-3)中音频重播位置`(sound no, note no)`。若重播被停止则返回`None`。
-
-- `play(ch, snd, [tick], [loop])`<br>
-  播放通道`ch` (0-3)中的声音`snd` (0-63)。如果声音`snd`是一个列表，则按顺序播放。播放开始位置可以通过 `tick` (1 tick = 1/120 秒)指定。如果`loop`被指定为`True`则循环播放。
+- `play(ch, snd, [tick], [loop], [resume])`<br>
+  播放通道`ch`(0-3) 中的声音`snd`(0-63)。如果声音`snd`是一个列表，则按顺序播放。播放开始位置可以通过 `tick`(1 tick = 1/120 秒) 指定。如果`loop`被指定为`True`则循环播放。播放结束后要恢复之前的声音，请将 `resume` 设置为 `True`。
 
 - `playm(msc, [tick], [loop])`<br>
-  播放音乐`msc` (0-7)。播放开始位置可以通过 `tick` (1 tick = 1/120 秒)指定。如果`loop`被指定为`True`则循环播放。
+  播放音乐`msc`(0-7)。播放开始位置可以通过 `tick`(1 tick = 1/120 秒) 指定。如果`loop`被指定为`True`则循环播放。
 
 - `stop([ch])`<br>
-  停止指定通道`ch` (0-3)的重播。`stop()`可以停止所有通道的播放。
+  停止指定通道`ch`(0-3) 的重播。`stop()`可以停止所有通道的播放。
+
+- `play_pos(ch)`<br>
+  获取通道`ch`(0-3) 中音频重播位置`(sound no, note no)`。若重播被停止则返回`None`。
 
 ### 数学
 
@@ -560,7 +601,7 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
 - `atan2(y, x)`<br>
   返回`y`/`x`的正切，单位是度。
 
-- `rseed(seed: int)`<br>
+- `rseed(seed)`<br>
   设置随机数发生器的种子。
 
 - `rndi(a, b)`<br>
@@ -577,53 +618,56 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
 
 ### Image 类
 
-- `width`, `height`<br>
-  图像的宽和高。
-
-- `data`<br>
-  图像中的数据（256x256 的二维列表）。
-
-- `get(x, y)`<br>
-  获取图像中(`x`, `y`)位置的值。
+- `width`，`height`<br>
+  图像的宽和高
 
 - `set(x, y, data)`<br>
-  使用字符串列表设置坐标(`x`, `y`)处的图像。<br>
-  示例：`pyxel.image(0).set(10, 10, ["0123", "4567", "89ab", "cdef"])`
+  使用字符串列表设置坐标 (`x`, `y`) 处的图像。<br>
+  示例：`pyxel.images[0].set(10, 10, ["0123", "4567", "89ab", "cdef"])`
 
 - `load(x, y, filename)`<br>
-  在(`x`, `y`)处加载图像文件(png/gif/jpeg)。
+  在 (`x`, `y`) 处加载图像文件 (PNG/GIF/JPEG)。
+
+- `pget(x, y)`<br>
+  获取 (`x`, `y`) 处的像素颜色。
+
+- `pset(x, y, col)`<br>
+  用`col`颜色在 (`x`, `y`) 处绘制一个像素点。
 
 ### Tilemap 类
 
-- `width`, `height`<br>
-  瓦片地图(tilemap)的宽和高。
+- `width`，`height`<br>
+  瓦片地图的宽和高
 
-- `refimg`<br>
-  被瓦片地图 tilemap 引用的图像库(0-2)。
+- `imgsrc`<br>
+  被瓦片地图 tilemap 引用的图像库 (0-2)
 
 - `set(x, y, data)`<br>
-  使用字符串列表在坐标(`x`, `y`)处设置瓦片地图。<br>
+  使用字符串列表在坐标 (`x`, `y`) 处设置瓦片地图。<br>
   示例：`pyxel.tilemap(0).set(0, 0, ["0000 0100 a0b0", "0001 0101 a1b1"])`
 
+- `load(x, y, filename, layer)`<br>
+  从位于 (`x`, `y`) 处的 TMX 文件 (Tiled Map File) 中以绘图顺序 `layer`(0-) 加载图层。
+
 - `pget(x, y)`<br>
-  得到(`x`, `y`)处的瓦片。瓦片数据为元组`(tile_x, tile_y)`。
+  得到 (`x`, `y`) 处的瓦片。瓦片数据为元组`(tile_x, tile_y)`。
 
 - `pset(x, y, tile)`<br>
-  在(`x`, `y`)处画出瓦片`tile`。瓦片数据为元组`(tile_x, tile_y)`。
+  在 (`x`, `y`) 处画出瓦片`tile`。瓦片数据为元组`(tile_x, tile_y)`。
 
 ### Sound 类
 
 - `notes`<br>
-  音符列表(0-127)，数字越高，音调越高。数字达到 33 时，音调就达到'A2'(440Hz)。其余为-1.
+  音符列表 (0-127)，数字越高，音调越高。数字达到 33 时，音调就达到'A2'(440Hz)。其余为-1。
 
 - `tones`<br>
-  音色列表(0:三角波 / 1:方波 / 2:脉冲 / 3:噪声)
+  音色列表 (0:三角波 / 1:方波 / 2:脉冲 / 3:噪声)
 
 - `volumes`<br>
-  音量列表(0-7)
+  音量列表 (0-7)
 
 - `effects`<br>
-  音效列表(0:无 / 1:滑动 / 2:颤音 / 3:淡出)
+  音效列表 (0:None / 1:Slide / 2:Vibrato / 3:FadeOut / 4:Half-FadeOut / 5:Quarter-FadeOut)
 
 - `speed`<br>
   播放速度。1 为最快，数字越大，速度越慢。数字 120 时，每个音符长度为 1 秒。
@@ -632,29 +676,29 @@ Pyxel 应用程序文件也可以通过`pyxel app2exe`或`pyxel app2html`命令�
   使用字符串设置音符、音色、音量及音效。如果音色、音量及音效的字符串比音符字符串短，则从开头重复。
 
 - `set_notes(notes)`<br>
-  使用由'CDEFGAB'+'#-'+'0123'或'R'组成的字符串设置音符。大小写不敏感，且空格会被忽略。<br>
-  示例：`pyxel.sound(0).set_notes("G2B-2D3R RF3F3F3")`
+  使用由'CDEFGAB'+'#-'+'01234'或'R'组成的字符串设置音符。大小写不敏感，且空格会被忽略。<br>
+  示例：`pyxel.sounds[0].set_notes("G2B-2D3R RF3F3F3")`
 
 - `set_tones(tones)`<br>
   使用由'TSPN'组成的字符串设置音色。大小写不敏感，且空格会被忽略。<br>
-  示例：`pyxel.sound(0).set_tones("TTSS PPPN")`
+  示例：`pyxel.sounds[0].set_tones("TTSS PPPN")`
 
 - `set_volumes(volumes)`<br>
   使用由'01234567'组成的字符串设置音量。大小写不敏感，且空格会被忽略。<br>
-  示例：`pyxel.sound(0).set_volumes("7777 7531")`
+  示例：`pyxel.sounds[0].set_volumes("7777 7531")`
 
 - `set_effects(effects)`<br>
-  使用由'NSVF'组成的字符串设置音效。大小写不敏感，且空格会被忽略。<br>
-  示例：`pyxel.sound(0).set_effects("NFNF NVVS")`
+  使用由'NSVFHQ'组成的字符串设置音效。大小写不敏感，且空格会被忽略。<br>
+  示例：`pyxel.sounds[0].set_effects("NFNF NVVS")`
 
 ### Music 类
 
-- `snds_list`<br>
-  二维的声音列表(0-63)，带有通道的数量。
+- `seqs`<br>
+  二维的声音列表 (0-63)，带有通道的数量
 
-- `set(snds0, snds1, snds2, snds3)`<br>
-  设置所有通道的声音(0-63)列表。如果指定了空列表，则对应通道不会用来播放。<br>
-  示例：`pyxel.music(0).set([0, 1], [2, 3], [4], [])`
+- `set(seq0, seq1, seq2, ...)`<br>
+  设置通道的声音列表 (0-63)。如果指定了空列表，则对应通道不会用来播放。<br>
+  示例：`pyxel.musics[0].set([0, 1], [], [3])`
 
 ### 高级 APIs
 
@@ -664,27 +708,25 @@ Pyxel 还有一些“高级 API”，出于“可能令用户感到迷惑”、�
 
 ## 如何参与
 
-### Submitting Issue
+### 向我们报告问题
 
 使用[Issue Tracker](https://github.com/kitao/pyxel/issues)来提交 bug 报告或功能需求。在创建新 issue 之前，请确定没有类似的打开的 issue。
 
-### Manual Testing
+### 参与测试
 
 欢迎任何人在[Issue Tracker](https://github.com/kitao/pyxel/issues)中手动测试代码、上报 bug、提交优化建议等！
 
-### Submitting Pull Request
+### 贡献代码
 
-可以通过 pull requests(PRs)形式来提交补丁或修复。请确认你的 pull request 对应的 issue 地址在 issue tracker 中依然是 open 状态。
+可以通过 pull requests (PRs) 形式来提交补丁或修复。请确认你的 pull request 对应的 issue 地址在 issue tracker 中依然是 open 状态。
 
 一旦提交 pull request，则默认同意在[MIT License](../LICENSE)的许可下发布。
 
 ## 其他信息
 
-- [Q&A](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
-- [User Examples](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
-- [Discord Server (English)](https://discord.gg/Z87eYHN)
-- [Discord Server (Japanese - 日本語版)](https://discord.gg/qHA5BCS)
-- [Developer's Twitter account](https://twitter.com/kitao)
+- [问与答](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
+- [用户示例](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
+- [开发人员 X 账户](https://x.com/kitao)
 
 ## 许可证
 

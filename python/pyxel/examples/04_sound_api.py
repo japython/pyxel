@@ -4,7 +4,7 @@ import pyxel
 class App:
     def __init__(self):
         pyxel.init(200, 150, title="Pyxel Sound API")
-        pyxel.image(0).set(
+        pyxel.images[0].set(
             0,
             0,
             [
@@ -18,35 +18,35 @@ class App:
                 "01100000",
             ],
         )
-        pyxel.sound(0).set(
+        pyxel.sounds[0].set(
             "e2e2c2g1 g1g1c2e2 d2d2d2g2 g2g2rr" "c2c2a1e1 e1e1a1c2 b1b1b1e2 e2e2rr",
             "p",
             "6",
             "vffn fnff vffs vfnn",
             25,
         )
-        pyxel.sound(1).set(
+        pyxel.sounds[1].set(
             "r a1b1c2 b1b1c2d2 g2g2g2g2 c2c2d2e2" "f2f2f2e2 f2e2d2c2 d2d2d2d2 g2g2r r ",
             "s",
             "6",
             "nnff vfff vvvv vfff svff vfff vvvv svnn",
             25,
         )
-        pyxel.sound(2).set(
+        pyxel.sounds[2].set(
             "c1g1c1g1 c1g1c1g1 b0g1b0g1 b0g1b0g1" "a0e1a0e1 a0e1a0e1 g0d1g0d1 g0d1g0d1",
             "t",
             "7",
             "n",
             25,
         )
-        pyxel.sound(3).set(
+        pyxel.sounds[3].set(
             "f0c1f0c1 g0d1g0d1 c1g1c1g1 a0e1a0e1" "f0c1f0c1 f0c1f0c1 g0d1g0d1 g0d1g0d1",
             "t",
             "7",
             "n",
             25,
         )
-        pyxel.sound(4).set(
+        pyxel.sounds[4].set(
             "f0ra4r f0ra4r f0ra4r f0f0a4r", "n", "6622 6622 6622 6422", "f", 25
         )
         self.play_music(True, True, True)
@@ -84,16 +84,16 @@ class App:
     def draw(self):
         pyxel.cls(1)
 
-        pyxel.text(6, 6, "sound(snd).set(note,tone,volume,effect,speed)", 7)
+        pyxel.text(6, 6, "sounds[snd].set(note,tone,volume,effect,speed)", 7)
         pyxel.rect(12, 14, 177, 35, 2)
         pyxel.text(16, 17, "note  :[CDEFGAB] + [ #-] + [0-4] or [R]", 9)
         pyxel.text(16, 25, "tone  :[T]riangle [S]quare [P]ulse [N]oise", 9)
         pyxel.text(16, 33, "volume:[0-7]", 9)
         pyxel.text(16, 41, "effect:[N]one [S]lide [V]ibrato [F]adeOut", 9)
-        pyxel.text(6, 53, "music(msc).set(ch0,ch1,ch2,ch3)", 7)
+        pyxel.text(6, 53, "musics[msc].set(seq0,seq1,seq2,...)", 7)
 
-        pyxel.text(6, 62, "play(ch,snd,loop=False)", 7)
-        pyxel.text(6, 71, "playm(msc,loop=False)", 7)
+        pyxel.text(6, 62, "play(ch,snd,[loop],[resume])", 7)
+        pyxel.text(6, 71, "playm(msc,[loop])", 7)
         pyxel.text(6, 80, "stop([ch])", 7)
 
         pyxel.rectb(6, 97, 188, 47, 14)

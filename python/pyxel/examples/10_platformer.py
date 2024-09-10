@@ -14,19 +14,19 @@ enemies = []
 
 
 def get_tile(tile_x, tile_y):
-    return pyxel.tilemap(0).pget(tile_x, tile_y)
+    return pyxel.tilemaps[0].pget(tile_x, tile_y)
 
 
-def detect_collision(x, y, dy):
-    x1 = x // 8
-    y1 = y // 8
-    x2 = (x + 8 - 1) // 8
-    y2 = (y + 8 - 1) // 8
+def is_colliding(x, y, is_falling):
+    x1 = pyxel.floor(x) // 8
+    y1 = pyxel.floor(y) // 8
+    x2 = (pyxel.ceil(x) + 7) // 8
+    y2 = (pyxel.ceil(y) + 7) // 8
     for yi in range(y1, y2 + 1):
         for xi in range(x1, x2 + 1):
             if get_tile(xi, yi)[0] >= WALL_TILE_X:
                 return True
-    if dy > 0 and y % 8 == 1:
+    if is_falling and y % 8 == 1:
         for xi in range(x1, x2 + 1):
             if get_tile(xi, y1 + 1) == TILE_FLOOR:
                 return True
@@ -34,31 +34,19 @@ def detect_collision(x, y, dy):
 
 
 def push_back(x, y, dx, dy):
-    abs_dx = abs(dx)
-    abs_dy = abs(dy)
-    if abs_dx > abs_dy:
-        sign = 1 if dx > 0 else -1
-        for _ in range(abs_dx):
-            if detect_collision(x + sign, y, dy):
-                break
-            x += sign
-        sign = 1 if dy > 0 else -1
-        for _ in range(abs_dy):
-            if detect_collision(x, y + sign, dy):
-                break
-            y += sign
-    else:
-        sign = 1 if dy > 0 else -1
-        for _ in range(abs_dy):
-            if detect_collision(x, y + sign, dy):
-                break
-            y += sign
-        sign = 1 if dx > 0 else -1
-        for _ in range(abs_dx):
-            if detect_collision(x + sign, y, dy):
-                break
-            x += sign
-    return x, y, dx, dy
+    for _ in range(pyxel.ceil(abs(dy))):
+        step = max(-1, min(1, dy))
+        if is_colliding(x, y + step, dy > 0):
+            break
+        y += step
+        dy -= step
+    for _ in range(pyxel.ceil(abs(dx))):
+        step = max(-1, min(1, dx))
+        if is_colliding(x + step, y, dy > 0):
+            break
+        x += step
+        dx -= step
+    return x, y
 
 
 def is_wall(x, y):
@@ -80,14 +68,10 @@ def spawn_enemy(left_x, right_x):
                 enemies.append(Enemy3(x * 8, y * 8))
 
 
-def cleanup_list(list):
-    i = 0
-    while i < len(list):
-        elem = list[i]
-        if elem.is_alive:
-            i += 1
-        else:
-            list.pop(i)
+def cleanup_entities(entities):
+    for i in range(len(entities) - 1, -1, -1):
+        if not entities[i].is_alive:
+            del entities[i]
 
 
 class Player:
@@ -112,7 +96,7 @@ class Player:
         if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
             self.dy = -6
             pyxel.play(3, 8)
-        self.x, self.y, self.dx, self.dy = push_back(self.x, self.y, self.dx, self.dy)
+        self.x, self.y = push_back(self.x, self.y, self.dx, self.dy)
         if self.x < scroll_x:
             self.x = scroll_x
         if self.y < 0:
@@ -149,7 +133,7 @@ class Enemy1:
             self.direction = 1
         elif self.direction > 0 and is_wall(self.x + 8, self.y + 4):
             self.direction = -1
-        self.x, self.y, self.dx, self.dy = push_back(self.x, self.y, self.dx, self.dy)
+        self.x, self.y = push_back(self.x, self.y, self.dx, self.dy)
 
     def draw(self):
         u = pyxel.frame_count // 4 % 2 * 8
@@ -178,7 +162,7 @@ class Enemy2:
                 is_wall(self.x + 8, self.y + 4) or not is_wall(self.x + 7, self.y + 8)
             ):
                 self.direction = -1
-        self.x, self.y, self.dx, self.dy = push_back(self.x, self.y, self.dx, self.dy)
+        self.x, self.y = push_back(self.x, self.y, self.dx, self.dy)
 
     def draw(self):
         u = pyxel.frame_count // 4 % 2 * 8 + 16
@@ -232,7 +216,7 @@ class App:
         pyxel.load("assets/platformer.pyxres")
 
         # Change enemy spawn tiles invisible
-        pyxel.image(0).rect(0, 8, 24, 8, TRANSPARENT_COLOR)
+        pyxel.images[0].rect(0, 8, 24, 8, TRANSPARENT_COLOR)
 
         global player
         player = Player(0, 0)
@@ -252,7 +236,7 @@ class App:
             enemy.update()
             if enemy.x < scroll_x - 8 or enemy.x > scroll_x + 160 or enemy.y > 160:
                 enemy.is_alive = False
-        cleanup_list(enemies)
+        cleanup_entities(enemies)
 
     def draw(self):
         pyxel.cls(0)

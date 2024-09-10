@@ -7,13 +7,13 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H27VDKD)
 
-[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) ]
+[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) | [Türkçe](README.tr.md) | [Українська](README.uk.md) ]
 
 **Pyxel** ist eine Retro-Spielengine für Python.
 
 Dank seiner einfachen, von Retro-Spielkonsolen inspirierten, Spezifikationen, wie z. B. dass nur 16 Farben angezeigt werden können und nur 4 Töne gleichzeitig wiedergegeben werden können, kannst du dich frei fühlen, um Spiele im Pixel-Art-Stil zu entwickeln.
 
-<img src="images/pyxel_300000_downloads.gif" width="480">
+<img src="images/pyxel_message.png" width="480">
 
 Die Motivation für die Entwicklung von Pyxel ist das Feedback der Nutzer. Bitte geben Sie Pyxel einen Stern auf GitHub!
 
@@ -64,7 +64,7 @@ Pyxel ist quelloffen und kostenlos zu verwenden. Fang an, ein Retro-Spiel mit Py
 
 ### Windows
 
-Nach der Installation von [Python3](https://www.python.org/) (Version 3.7 oder höher), führe folgenden Befehl aus:
+Nach der Installation von [Python3](https://www.python.org/) (Version 3.8 oder höher), führe folgenden Befehl aus:
 
 ```sh
 pip install -U pyxel
@@ -74,17 +74,19 @@ Wenn Sie Python mit dem offiziellen Installationsprogramm installieren, aktivier
 
 ### Mac
 
-Nach der Installation von [Python3](https://www.python.org/) (version 3.7oder höher), führe folgenden Befehl aus:
+Nach der Installation von [Homebrew](https://brew.sh/) führen Sie die folgenden Befehle aus:
 
 ```sh
-python3 -m pip install -U pyxel
+brew install pipx
+pipx ensurepath
+pipx install pyxel
 ```
 
-Wenn Sie Python3 verwenden, das auf dem Mac standardmäßig installiert ist, fügen Sie bitte `sudo` an den Anfang des obigen Befehls, um den Befehl `pyxel` zu aktivieren.
+Um die Version nach der Installation von Pyxel zu aktualisieren, führen Sie `pipx upgrade pyxel` aus.
 
 ### Linux
 
-Nach der Installation des SDL2-Packages (`libsdl2-dev` für Ubuntu), [Python3](https://www.python.org/) (version 3.7 oder höher) und `python3-pip`, führe folgenden Befehl aus:
+Nach der Installation des SDL2-Packages (`libsdl2-dev` für Ubuntu), [Python3](https://www.python.org/) (version 3.8 oder höher) und `python3-pip`, führe folgenden Befehl aus:
 
 ```sh
 sudo pip3 install -U pyxel
@@ -188,6 +190,24 @@ Die zu kopierenden Beispiele lauten wie folgt:
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py">Code</a></td>
 </tr>
 <tr>
+<td>14_synthesizer.py</td>
+<td>Synthesizer mit Audioerweiterungsfunktionen</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/14_synthesizer.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/14_synthesizer.py">Code</a></td>
+</tr>
+<tr>
+<td>15_tiled_map_file.py</td>
+<td>Laden und Zeichnen einer Kachelkartendatei (.tmx)</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py">Code</a></td>
+</tr>
+<tr>
+<td>16_transform.py</td>
+<td>Bilddrehung und -skalierung</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/16_transform.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py">Code</a></td>
+</tr>
+<tr>
 <td>99_flip_animation.py</td>
 <td>Animation mit flip-Funktion (nur für Nicht-Web-Plattformen)</td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/docs/images/99_flip_animation.gif">Demo</a></td>
@@ -195,15 +215,21 @@ Die zu kopierenden Beispiele lauten wie folgt:
 </tr>
 <tr>
 <td>30SecondsOfDaylight.pyxapp</td>
-<td>1. Pyxel Jam Gewinnspiel von Adam</td>
+<td>1. Pyxel Jam Gewinnspiel von <a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/30SecondsOfDaylight.html">Demo</a></td>
 <td><a href="https://github.com/kitao/30SecondsOfDaylight">Code</a></td>
 </tr>
 <tr>
 <td>megaball.pyxapp</td>
-<td>Arcade Ball Physik Spiel von Adam</td>
+<td>Arcade Ball Physik Spiel von <a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/megaball.html">Demo</a></td>
 <td><a href="https://github.com/helpcomputer/megaball">Code</a></td>
+</tr>
+<tr>
+<td>8bit-bgm-gen.pyxapp</td>
+<td>Hintergrundmusikgenerator von <a href="https://x.com/frenchbread1222">frenchbread</a></td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/8bit-bgm-gen.html">Demo</a></td>
+<td><a href="https://github.com/shiromofufactory/8bit-bgm-generator">Code</a></td>
 </tr>
 </table>
 
@@ -273,19 +299,25 @@ pyxel.show()
 
 ### Pyxel-Anwendung ausführen
 
-Das erstellte Python-Skript kann mit dem folgenden Befehl ausgeführt werden:
+Ein erstelltes Python-Skript kann mit dem Befehl `python` ausgeführt werden:
+
+```sh
+python PYTHON_SCRIPT_FILE
+```
+
+Es kann auch mit dem Befehl `pyxel run` ausgeführt werden:
 
 ```sh
 pyxel run PYTHON_SCRIPT_FILE
 ```
 
-Es kann auch wie ein normales Python-Skript ausgeführt werden:
+Darüber hinaus ermöglicht der Befehl `pyxel watch` die Überwachung von Änderungen in einem bestimmten Verzeichnis und führt das Programm automatisch erneut aus, wenn Änderungen festgestellt werden:
 
 ```sh
-python3 PYTHON_SCRIPT_FILE
+pyxel watch WATCH_DIR PYTHON_SCRIPT_FILE
 ```
 
-(Für Windows, gib `python` anstatt `python3` ein)
+Die Verzeichnisüberwachung kann durch Drücken der Tastenkombination `Ctrl(Command)+C` beendet werden.
 
 ### Shortcuts
 
@@ -299,10 +331,16 @@ Die folgenden Shortcuts können eingegeben werden, während eine Pyxel-Anwendung
   Setzt die Startzeit für die Aufnahme des Bildschirmaufzeichnung zurück
 - `Alt(Option)+3`<br>
   Speichert die Bildschirmaufzeichnung zum Desktop (bis zu 10 Sekunden)
+- `Alt(Option)+9`<br>
+  Wechseln Sie zwischen den Bildschirmmodi (Crisp/Smooth/Retro)
 - `Alt(Option)+0`<br>
   Umschalten des Leistungsmonitors (fps, Updatezeit und Framezeit)
 - `Alt(Option)+Enter`<br>
   Fullscreen umschalten
+- `Shift+Alt(Option)+1/2/3`<br>
+  Speichern Sie die entsprechende Bilddatenbank auf dem Desktop
+- `Shift+Alt(Option)+0`<br>
+  Speichern der aktuellen Farbpalette auf dem Desktop
 
 ### Wie man eine Ressource erstellt
 
@@ -314,15 +352,15 @@ Starte den Editor mit folgendem Befehl:
 pyxel edit PYXEL_RESOURCE_FILE
 ```
 
-Wenn die angegebene Pyxel-Datei (.pyxres) existiert, wird die Datei geladen, wenn nicht, wird eine neue Datei mit dem angegebenen Namen erstellt. Wenn die Datei nicht angegeben wird, lautet der Name my_resource.pyxres.
+Wenn die angegebene Pyxel-Datei (.pyxres) existiert, wird die Datei geladen, wenn nicht, wird eine neue Datei mit dem angegebenen Namen erstellt. Wenn die Datei nicht angegeben wird, lautet der Name `my_resource.pyxres`.
 
-Nach dem Start des Pyxel-Editors kann die Datei durch Drag-and-Drop einer anderen Ressourcendatei gewechselt werden. Wenn die Taste `Strg(Cmd)` während des Drag-and-Drops gedrückt wird, wird nur der Ressourcentyp (Bild/Tilemap/Sound/Musik), der gerade bearbeitet wird, geladen. Das ermöglicht es, mehrere Ressourcendateien zu einer einzigen zu kombinieren.
+Nach dem Start des Pyxel-Editors kann die Datei durch Drag-and-Drop einer anderen Ressourcendatei gewechselt werden.
 
 Die erstellte Ressourcendatei kann mit der Funktion `load` geladen werden.
 
-Der Pyxel Editor hat die folgenden Bearbeitungsmodi
+Der Pyxel Editor hat die folgenden Bearbeitungsmodi.
 
-**Bildeditor:**
+**Bildeditor**
 
 Der Modus zum Editieren von Image Banks.
 
@@ -330,9 +368,9 @@ Der Modus zum Editieren von Image Banks.
 <img src="images/image_editor.gif">
 </a>
 
-Per Drag-and-Drop einer Bild-Datei (png/gif/jpeg) auf das Bildeditor-Fenster kann das Bild in die aktuell ausgewählte Image-Bank geladen werden.
+Ziehen Sie eine Bilddatei (PNG/GIF/JPEG) auf den Bildeditor, um das Bild in die aktuell ausgewählte Bildbank zu laden.
 
-**Tilemap-Editor:**
+**Tilemap-Editor**
 
 Der Modus zum editieren von Tilemaps in welcher Bilder aus der Image Bank in einem Tile-Pattern arrangiert sind.
 
@@ -340,7 +378,9 @@ Der Modus zum editieren von Tilemaps in welcher Bilder aus der Image Bank in ein
 <img src="images/tilemap_editor.gif">
 </a>
 
-**Sound-Editor:**
+Ziehen Sie eine TMX-Datei (Tiled Map File) auf den Tilemap-Editor, um ihre Ebene in der Zeichenreihenfolge zu laden, die der aktuell ausgewählten Tilemap-Nummer entspricht.
+
+**Sound-Editor**
 
 Der Modus um Sounds zu editieren.
 
@@ -348,7 +388,7 @@ Der Modus um Sounds zu editieren.
 <img src="images/sound_editor.gif">
 </a>
 
-**Musik-Editor:**
+**Musik-Editor**
 
 Der Modus um Sounds in Wiedergabereihenfolge zu Musik zusammenzufügen.
 
@@ -361,7 +401,7 @@ Der Modus um Sounds in Wiedergabereihenfolge zu Musik zusammenzufügen.
 Pyxel-Bilder und Tilemaps können auch mit den folgenden Methoden erstellt werden:
 
 - Erstelle ein Bild aus einer Liste strings mit der `Image.set` Funktion oder der `Tilemap.set` Funktion.
-- Lade eine Bild-Datei (png/gif/jpeg) in die Pyxel-Palette mit der `Image.load` Funktion.
+- Lade eine Bild-Datei (PNG/GIF/JPEG) in die Pyxel-Palette mit der `Image.load` Funktion.
 
 Pyxel-Sounds können auch mit der folgenden Methode erstellt werden:
 
@@ -373,7 +413,7 @@ Bitte lesen Sie die API-Referenz für die Verwendung dieser Funktionen.
 
 Pyxel unterstützt ein spezielles Dateiformat für das Teilen von Pyxel-Anwendungen (Pyxel application file), das plattformübergreifend funktioniert.
 
-Erstelle die Pyxel-Anwendungsdatei (.pyxapp) mit folgendem Befehl:
+Erstellen Sie die Pyxel-Anwendungsdatei (.pyxapp) mit dem Befehl `pyxel package`:
 
 ```sh
 pyxel package APP_DIR STARTUP_SCRIPT_FILE
@@ -381,7 +421,7 @@ pyxel package APP_DIR STARTUP_SCRIPT_FILE
 
 Wenn die Anwendung Ressourcen oder zusätzliche Module enthalten soll, legen Sie diese in das Anwendungsverzeichnis.
 
-Die erstellte Anwendungsdatei kann mit dem folgenden Befehl ausgeführt werden:
+Die erstellte Anwendungsdatei kann mit dem Befehl `pyxel play` ausgeführt werden:
 
 ```sh
 pyxel play PYXEL_APP_FILE
@@ -410,15 +450,15 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Zeige das Fenster und warte bis die `Esc` Taste gedrückt wird.
 
 - `flip()`<br>
-  Verschiebt den Bildschirm um ein Bild. Die Anwendung wird beendet, wenn die Taste `Esc` gedrückt wird. Diese Funktion funktioniert nur auf Nicht-Web-Plattformen.
+  Verschiebt den Bildschirm um ein Bild. Die Anwendung wird beendet, wenn die Taste `Esc` gedrückt wird. Diese Funktion funktioniert nicht in der Web-Version.
 
 - `quit()`<br>
   Beende das Pyxel-Programm.
 
 ### Ressourcen
 
-- `load(filename, [image], [tilemap], [sound], [music])`<br>
-  Lade die Ressourcen-Datei (.pyxres). Falls `False` für den Ressourcentyp angegeben ist (`image/tilemap/sound/music`), wird die Ressource nicht geladen. Wenn eine gleichnamige Palettendatei (.pyxpal) am gleichen Ort wie die Ressourcendatei vorhanden ist, wird die Farbe der Palettenanzeige ebenfalls geändert. Die Palettendatei ist ein hexadezimaler Eintrag der Anzeigefarben, getrennt durch Zeilenumbrüche. Die Palettendatei kann auch verwendet werden, um die im Pyxel Editor angezeigten Farben zu ändern.
+- `load(filename, [excl_images], [excl_tilemaps], [excl_sounds], [excl_musics])`<br>
+  Lade die Ressourcen-Datei (.pyxres). Wenn eine Option `True` ist, wird die Ressource nicht geladen. Wenn eine Palettendatei (.pyxpal) mit demselben Namen am selben Ort wie die Ressourcendatei existiert, wird die Farbe der Palettenanzeige ebenfalls geändert. Die Palettendatei ist ein hexadezimaler Eintrag der Anzeigefarben (z.B. `1100FF`), getrennt durch Zeilenumbrüche. Die Palettendatei kann auch verwendet werden, um die im Pyxel Editor angezeigten Farben zu ändern.
 
 ### Eingabe
 
@@ -429,16 +469,16 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Der aktuelle Wert des Scrollrads
 
 - `btn(key)`<br>
-  Return `True` falls `key` gedrückt ist, sonst return `False` ([Liste der Schlüsseldefinitionen](../python/pyxel/__init__.pyi))
+  Return `True` falls `key` gedrückt ist, sonst return `False`. ([Liste der Schlüsseldefinitionen](../python/pyxel/__init__.pyi))
 
 - `btnp(key, [hold], [repeat])`<br>
-  Return `True` falls `key` gedrückt ist, sonst return `False`. Wenn `hold` und `repeat` angegeben sind, wird `True` am `repeat` Bildintervall returned, falls `key` für mehr als `hold` Frames gedrückt ist
+  Return `True` falls `key` gedrückt ist, sonst return `False`. Wenn `hold` und `repeat` angegeben sind, wird `True` am `repeat` Bildintervall returned, falls `key` für mehr als `hold` Frames gedrückt ist.
 
 - `btnr(key)`<br>
   Return `True` falls `key` in dem Frame losgelassen wird, sonst return `False`
 
 - `mouse(visible)`<br>
-  Falls `visible` `True` ist, zeige den Mauscursor. Falls `False`, verstecke ihn. Obwohl man den Cursor dann nicht sehen kann, wird seine Position geupdated
+  Falls `visible` `True` ist, zeige den Mauscursor. Falls `False`, verstecke ihn. Obwohl man den Cursor dann nicht sehen kann, wird seine Position geupdated.
 
 ### Grafiken
 
@@ -446,12 +486,12 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Liste der Anzeigefarben der Palette. Die Anzeigefarbe wird durch einen numerischen 24-Bit-Wert angegeben. Verwende `colors.from_list` und `colors.to_list`, um Python-Listen direkt zuzuweisen und abzurufen.<br>
   z.B. `old_colors = pyxel.colors.to_list(); pyxel.colors.from_list([0x111111, 0x222222, 0x333333]); pyxel.colors[15] = 0x112233`
 
-- `image(img)`<br>
-  Bediene die Image-Bank `img` (0-2). (Siehe die Klasse Image)<br>
-  z.B. `pyxel.image(0).load(0, 0, "title.png")`
+- `images`<br>
+  Liste der Bildbanken (0-2). (Siehe die Klasse Image)<br>
+  z.B. `pyxel.images[0].load(0, 0, "title.png")`
 
-- `tilemap(tm)`<br>
-  Bediene die Tilemap `tm`(0-7) (siehe die Tilemap class)
+- `tilemaps`<br>
+  Liste der Kachelkarten (0-7). (siehe die Tilemap class)
 
 - `clip(x, y, w, h)`<br>
   Setze den Bildausschnitt von (`x`, `y`) zu Breite `w` und Höhe `h`. Setze den Bildausschnitt zurück zum Follbild mit `clip()`
@@ -460,31 +500,34 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Change the upper left corner coordinates of the screen to (`x`, `y`). Reset the upper left corner coordinates to (`0`, `0`) with `camera()`.
 
 - `pal(col1, col2)`<br>
-  Ersetze Farbe `col1` mit `col2` beim zeichnen. Mit `pal()` lässt sich die Pallete auf die initiale zurücksetzen
+  Ersetze Farbe `col1` mit `col2` beim zeichnen. Mit `pal()` lässt sich die Pallete auf die initiale zurücksetzen.
+
+- `dither(alpha)`<br>
+  Wendet Dithering (Pseudo-Transparenz) beim Zeichnen an. Setzen Sie `alpha` in den Bereich 0.0-1.0, wobei 0.0 transparent und 1.0 undurchsichtig ist.
 
 - `cls(col)`<br>
-  Das Fenster mit der Farbe `col` füllen
+  Das Fenster mit der Farbe `col` füllen.
 
 - `pget(x, y)`<br>
   Erhalte den Pixel an der Position (`x`, `y`).
 
 - `pset(x, y, col)`<br>
-  Zeichne einen Pixel der Farbe `col` an der Position (`x`, `y`)
+  Zeichne einen Pixel der Farbe `col` an der Position (`x`, `y`).
 
 - `line(x1, y1, x2, y2, col)`<br>
-  Zeichne eine Linie der Farbe `col` von (`x1`, `y1`) bis (`x2`, `y2`)
+  Zeichne eine Linie der Farbe `col` von (`x1`, `y1`) bis (`x2`, `y2`).
 
 - `rect(x, y, w, h, col)`<br>
-  Zeichne ein Rechteck der Breite `w`, Höhe `h` und Farbe `col` ausgehend von (`x`, `y`)
+  Zeichne ein Rechteck der Breite `w`, Höhe `h` und Farbe `col` ausgehend von (`x`, `y`).
 
 - `rectb(x, y, w, h, col)`<br>
-  Zeichne die Umrisse eines Rechtecks der Breite `w`, Höhe `h` und Farbe `col` ausgehend von (`x`, `y`)
+  Zeichne die Umrisse eines Rechtecks der Breite `w`, Höhe `h` und Farbe `col` ausgehend von (`x`, `y`).
 
 - `circ(x, y, r, col)`<br>
-  Zeichne einen Kreis mit dem Radius `r` und Farbe `col` an der Stelle (`x`, `y`)
+  Zeichne einen Kreis mit dem Radius `r` und Farbe `col` an der Stelle (`x`, `y`).
 
 - `circb(x, y, r, col)`<br>
-  Zeichne die Umrisse eines Kreises mit dem Radius `r` und Farbe `col` an der Stelle (`x`, `y`)
+  Zeichne die Umrisse eines Kreises mit dem Radius `r` und Farbe `col` an der Stelle (`x`, `y`).
 
 - `elli(x, y, w, h, col)`<br>
   Zeichne eine Ellipse mit der Breite `w`, der Höhe `h` und der Farbe `col` von (`x`, `y`).
@@ -501,39 +544,39 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
 - `fill(x, y, col)`<br>
   Zeichne eine Ellipse mit der Breite `w`, der Höhe `h` und der Farbe `col` von (`x`, `y`).
 
-- `blt(x, y, img, u, v, w, h, [colkey])`<br>
-  Kopiere eine Region der Größe (`w`, `h`) von (`u`, `v`) des Image Banks `img`(0-2) zur Position (`x`, `y`). Falls `w` und/oder `h` negativ ist, wird der Ausschnitt horizontal und/oder vertical gespiegelt. Falls `colkey` angegeben ist, wird der Auschnitt als transparentes Farbe behandelt
+- `blt(x, y, img, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  Kopiere eine Region der Größe (`w`, `h`) von (`u`, `v`) des Image Banks `img`(0-2) zur Position (`x`, `y`). Falls `w` und/oder `h` negativ ist, wird der Ausschnitt horizontal und/oder vertical gespiegelt. Falls `colkey` angegeben ist, wird der Auschnitt als transparentes Farbe behandelt. Wenn `rotate`(in Grad), `scale`(1.0=100%) oder beides angegeben ist, wird die entsprechende Transformation angewendet.
 
 <img src="images/blt_figure.png">
 
-- `bltm(x, y, tm, u, v, w, h, [colkey])`<br>
-  Kopiert den Bereich der Größe (`w`, `h`) von (`u`, `v`) der Tilemap `tm` (0-7) nach (`x`, `y`). Wenn ein negativer Wert für `w` und/oder `h` angegeben wird, wird es horizontal und/oder vertikal umgekehrt. Wenn `colkey` angegeben ist, wird es als transparente Farbe behandelt. Die Größe einer Kachel ist 8x8 Pixel und wird in einer Tilemap als Tupel von `(tile_x, tile_y)` gespeichert.
+- `bltm(x, y, tm, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  Kopiert den Bereich der Größe (`w`, `h`) von (`u`, `v`) der Tilemap `tm`(0-7) nach (`x`, `y`). Wenn ein negativer Wert für `w` und/oder `h` angegeben wird, wird es horizontal und/oder vertikal umgekehrt. Wenn `colkey` angegeben ist, wird es als transparente Farbe behandelt. Wenn `rotate`(in Grad), `scale`(1.0=100%) oder beides angegeben ist, wird die entsprechende Transformation angewendet. Die Größe einer Kachel ist 8x8 Pixel und wird in einer Tilemap als Tupel von `(tile_x, tile_y)` gespeichert.
 
 <img src="images/bltm_figure.png">
 
 - `text(x, y, s, col)`<br>
-  Zeichne einen String `s` der Farbe `col` bei (`x`, `y`)
+  Zeichne einen String `s` der Farbe `col` bei (`x`, `y`).
 
 ### Audio
 
-- `sound(snd)`<br>
-  Bediene den Ton `snd`(0-63). (siehe die Sound class).<br>
-  z.B. `pyxel.sound(0).speed = 60`
+- `sounds`<br>
+  Liste der Töne (0-63). (siehe die Sound class)<br>
+  z.B. `pyxel.sounds[0].speed = 60`
 
-- `music(msc)`<br>
-  Bediene die Musik `msc`(0-7) (siehe die Music class)
+- `musics`<br>
+  Liste der Musikstücke (0-7). (siehe die Music class)
 
-- `play_pos(ch)`<br>
-  Ermittelt die Tonwiedergabeposition des Kanals `ch` (0-3) als Tupel von `(Ton-Nr., Noten-Nr.)`. Gibt `None` zurück, wenn die Wiedergabe gestoppt ist.
-
-- `play(ch, snd, [tick], [loop])`<br>
-  Spielt den Ton `snd` (0-63) auf Kanal `ch` (0-3). Die Startposition der Wiedergabe kann durch `tick` (1 tick = 1/120 Sekunden) angegeben werden. Falls `snd` eine Liste ist, wird es in der Reihenfolge abgespielt. Falls `True` für `loop` angeben ist, wird eine Schleifenwiedergabe durchgeführt.
+- `play(ch, snd, [tick], [loop], [resume])`<br>
+  Spielt den Ton `snd`(0-63) auf Kanal `ch`(0-3). Die Startposition der Wiedergabe kann durch `tick`(1 tick = 1/120 Sekunden) angegeben werden. Falls `snd` eine Liste ist, wird es in der Reihenfolge abgespielt. Falls `True` für `loop` angeben ist, wird eine Schleifenwiedergabe durchgeführt. Um den vorherigen Ton nach dem Ende der Wiedergabe fortzusetzen, setzen Sie `resume` auf `True`.
 
 - `playm(msc, [tick], [loop])`<br>
-  Spielt die Musik `msc` (0-7). Die Startposition der Wiedergabe kann durch `tick` (1 tick = 1/120 Sekunden) angegeben werden. Falls `True` für `loop` angegeben ist, wird eine Schleifenwiedergabe durchgeführt.
+  Spielt die Musik `msc`(0-7). Die Startposition der Wiedergabe kann durch `tick`(1 tick = 1/120 Sekunden) angegeben werden. Falls `True` für `loop` angegeben ist, wird eine Schleifenwiedergabe durchgeführt.
 
 - `stop([ch])`<br>
-  Stoppt die Wiedergabe des angegebenen Kanals `ch` (0-3). `stop()`, um die Wiedergabe aller Kanäle zu stoppen.
+  Stoppt die Wiedergabe des angegebenen Kanals `ch`(0-3). `stop()`, um die Wiedergabe aller Kanäle zu stoppen.
+
+- `play_pos(ch)`<br>
+  Ermittelt die Tonwiedergabeposition des Kanals `ch`(0-3) als Tupel von `(Ton-Nr., Noten-Nr.)`. Gibt `None` zurück, wenn die Wiedergabe gestoppt ist.
 
 ### Mathematik
 
@@ -558,7 +601,7 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
 - `atan2(y, x)`<br>
   Gibt den Arkustangens von `y`/`x` in Grad zurück.
 
-- `rseed(seed: int)`<br>
+- `rseed(seed)`<br>
   Setzt den Seed des Zufallszahlengenerators.
 
 - `rndi(a, b)`<br>
@@ -578,30 +621,33 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
 - `width`, `height`<br>
   Die Breite und Höhe des Bildes
 
-- `data`<br>
-  Die Daten des Bildes (256x256 zweidimensionale list)
-
-- `get(x, y)`<br>
-  Erhalte die Daten des Bildes an der Position (`x`, `y`)
-
 - `set(x, y, data)`<br>
   Setzen des Bildes an (`x`, `y`) durch eine Liste von strings.<br>
-  z.B. `pyxel.image(0).set(10, 10, ["0123", "4567", "89ab", "cdef"])`
+  z.B. `pyxel.images[0].set(10, 10, ["0123", "4567", "89ab", "cdef"])`
 
 - `load(x, y, filename)`<br>
-  Lade die Bild-Datei (png/gif/jpeg) at (`x`, `y`).
+  Lade die Bild-Datei (PNG/GIF/JPEG) at (`x`, `y`).
+
+- `pget(x, y)`<br>
+  Erhalte den Pixel an der Position (`x`, `y`).
+
+- `pset(x, y, col)`<br>
+  Zeichne einen Pixel der Farbe `col` an der Position (`x`, `y`).
 
 ### Tilemap Klasse
 
 - `width`, `height`<br>
   Die Breite und Höhe der Tilemap
 
-- `refimg`<br>
+- `imgsrc`<br>
   Die von der Tilemap referenzierte Image-Bank (0-2)
 
 - `set(x, y, data)`<br>
   Setzen der Tilemap an (`x`, `y`) durch eine Liste von strings.<br>
   z.B. `pyxel.tilemap(0).set(0, 0, ["0000 0100 a0b0", "0001 0101 a1b1"])`
+
+- `load(x, y, filename, layer)`<br>
+  Laden Sie den Layer in der Zeichnungsreihenfolge `layer`(0-) aus der TMX-Datei (Tiled Map File) an (`x`, `y`).
 
 - `pget(x, y)`<br>
   Gibt die Tile bei (`x`, `y`). Ein Tile ist eine Tuple von `(tile_x, tile_y)`.
@@ -621,7 +667,7 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Liste von Lautstärken (0-7)
 
 - `effects`<br>
-  Liste von Effekten (0:None / 1:Slide / 2:Vibrato / 3:FadeOut)
+  Liste von Effekten (0:None / 1:Slide / 2:Vibrato / 3:FadeOut / 4:Half-FadeOut / 5:Quarter-FadeOut)
 
 - `speed`<br>
   Abspielgeschwindigkeit. 1 ist die schnellste, und je größer die Zahl, desto langsamer die Wiedergabegeschwindigkeit. Bei 120 entspricht die Länge einer Note 1 Sekunde.
@@ -630,29 +676,29 @@ Pyxel-Anwendungsdateien können auch mit den Befehlen `pyxel app2exe` oder `pyxe
   Legt Noten, Töne, Lautstärken und Effekte mit einer Zeichenfolge fest. Wenn die Länge der Töne, Lautstärken und Effekte kürzer ist als die der Noten, wird sie von Anfang an wiederholt.
 
 - `set_notes(notes)`<br>
-  Setzt die Noten mit einem string aus 'CDEFGAB'+'#-'+'0123' oder 'R'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
-  z.B. `pyxel.sound(0).set_notes("G2B-2D3R RF3F3F3")`
+  Setzt die Noten mit einem string aus 'CDEFGAB'+'#-'+'01234' oder 'R'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
+  z.B. `pyxel.sounds[0].set_notes("G2B-2D3R RF3F3F3")`
 
 - `set_tones(tones)`<br>
   Setzt die Töne mit einem string aus 'TSPN'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
-  z.B. `pyxel.sound(0).set_tones("TTSS PPPN")`
+  z.B. `pyxel.sounds[0].set_tones("TTSS PPPN")`
 
 - `set_volumes(volumes)`<br>
   Setzt die Lautstärke mit einer Zeichenkette aus '01234567'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
-  z.B. `pyxel.sound(0).set_volumes("7777 7531")`
+  z.B. `pyxel.sounds[0].set_volumes("7777 7531")`
 
 - `set_effects(effects)`<br>
-  Setzt die Effekte mit einer Zeichenkette aus 'NSVF'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
-  z.B. `pyxel.sound(0).set_effects("NFNF NVVS")`
+  Setzt die Effekte mit einer Zeichenkette aus 'NSVFHQ'. Groß- und Kleinschreibung sowie Leerzeichen werden ignoriert.<br>
+  z.B. `pyxel.sounds[0].set_effects("NFNF NVVS")`
 
 ### Musik Klasse
 
-- `snds_list`<br>
-  Zweidimensionale Liste von Klängen (0-63) mit der Anzahl der Kanäle.
+- `seqs`<br>
+  Zweidimensionale Liste von Klängen (0-63) mit der Anzahl der Kanäle
 
-- `set(snds0, snds1, snds2, snds3)`<br>
-  Setzt die Tonlisten (0-63) für alle Kanäle fest. Wenn eine leere Liste angegeben wird, wird dieser Kanal nicht für die Wiedergabe verwendet.<br>
-  z.B. `pyxel.music(0).set([0, 1], [2, 3], [4], [])`
+- `set(seq0, seq1, seq2, ...)`<br>
+  Stellen Sie die Tonlisten (0-63) der Kanäle ein. Wenn eine leere Liste angegeben wird, wird dieser Kanal nicht für die Wiedergabe verwendet.<br>
+  z.B. `pyxel.musics[0].set([0, 1], [], [3])`
 
 ### Advanced APIs
 
@@ -678,11 +724,9 @@ Bei einem eingereichten Pull-Request wird davon ausgegangen, dass der Veröffent
 
 ## Weitere Informationen
 
-- [Q&A](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
-- [User Examples](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
-- [Discord Server (English)](https://discord.gg/Z87eYHN)
-- [Discord Server (Japanese - 日本語版)](https://discord.gg/qHA5BCS)
-- [Developer's Twitter account](https://twitter.com/kitao)
+- [FRAGEN UND ANTWORTEN](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
+- [Beispiele für Benutzer](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
+- [Entwickler X-Konto](https://x.com/kitao)
 
 ## Lizenz
 

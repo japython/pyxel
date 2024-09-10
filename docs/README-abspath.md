@@ -7,13 +7,13 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H27VDKD)
 
-[ [English](https://github.com/kitao/pyxel/blob/main//README.md) | [中文](https://github.com/kitao/pyxel/blob/main//docs/README.cn.md) | [Deutsch](https://github.com/kitao/pyxel/blob/main//docs/README.de.md) | [Español](https://github.com/kitao/pyxel/blob/main//docs/README.es.md) | [Français](https://github.com/kitao/pyxel/blob/main//docs/README.fr.md) | [Italiano](https://github.com/kitao/pyxel/blob/main//docs/README.it.md) | [日本語](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) | [한국어](https://github.com/kitao/pyxel/blob/main//docs/README.ko.md) | [Português](https://github.com/kitao/pyxel/blob/main//docs/README.pt.md) | [Русский](https://github.com/kitao/pyxel/blob/main//docs/README.ru.md) ]
+[ [English](https://github.com/kitao/pyxel/blob/main//README.md) | [中文](https://github.com/kitao/pyxel/blob/main//docs/README.cn.md) | [Deutsch](https://github.com/kitao/pyxel/blob/main//docs/README.de.md) | [Español](https://github.com/kitao/pyxel/blob/main//docs/README.es.md) | [Français](https://github.com/kitao/pyxel/blob/main//docs/README.fr.md) | [Italiano](https://github.com/kitao/pyxel/blob/main//docs/README.it.md) | [日本語](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) | [한국어](https://github.com/kitao/pyxel/blob/main//docs/README.ko.md) | [Português](https://github.com/kitao/pyxel/blob/main//docs/README.pt.md) | [Русский](https://github.com/kitao/pyxel/blob/main//docs/README.ru.md) | [Türkçe](https://github.com/kitao/pyxel/blob/main//docs/README.tr.md) | [Українська](https://github.com/kitao/pyxel/blob/main//docs/README.uk.md) ]
 
 **Pyxel** is a retro game engine for Python.
 
 Thanks to its simple specifications inspired by retro gaming consoles, such as only 16 colors can be displayed and only 4 sounds can be played back at the same time, you can feel free to enjoy making pixel art style games.
 
-<img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/pyxel_300000_downloads.gif" width="480">
+<img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/pyxel_message.png" width="480">
 
 The motivation for the development of Pyxel is the feedback from users. Please give Pyxel a star on GitHub!
 
@@ -64,7 +64,7 @@ Pyxel is open source and free to use. Let's start making a retro game with Pyxel
 
 ### Windows
 
-After installing [Python3](https://www.python.org/) (version 3.7 or higher), run the following command:
+After installing [Python3](https://www.python.org/) (version 3.8 or higher), run the following command:
 
 ```sh
 pip install -U pyxel
@@ -74,17 +74,19 @@ If you install Python using the official installer, please check the `Add Python
 
 ### Mac
 
-After installing [Python3](https://www.python.org/) (version 3.7 or higher), run the following command:
+After installing [Homebrew](https://brew.sh/), run the following commands:
 
 ```sh
-python3 -m pip install -U pyxel
+brew install pipx
+pipx ensurepath
+pipx install pyxel
 ```
 
-If you use Python3, which is installed by default on Mac, please add `sudo` to the beginning of the above command to enable `pyxel` command.
+To update the version after installing Pyxel, run `pipx upgrade pyxel`.
 
 ### Linux
 
-After installing the SDL2 package (`libsdl2-dev` for Ubuntu), [Python3](https://www.python.org/) (version 3.7 or higher), and `python3-pip`, run the following command:
+After installing the SDL2 package (`libsdl2-dev` for Ubuntu), [Python3](https://www.python.org/) (version 3.8 or higher), and `python3-pip`, run the following command:
 
 ```sh
 sudo pip3 install -U pyxel
@@ -188,6 +190,24 @@ The examples to be copied are as follows:
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py">Code</a></td>
 </tr>
 <tr>
+<td>14_synthesizer.py</td>
+<td>Synthesizer utilizing audio expantion features</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/14_synthesizer.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/14_synthesizer.py">Code</a></td>
+</tr>
+<tr>
+<td>15_tiled_map_file.py</td>
+<td>Loading and drawing a Tile Map File (.tmx)</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py">Code</a></td>
+</tr>
+<tr>
+<td>16_transform.py</td>
+<td>Image rotation and scaling</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/16_transform.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py">Code</a></td>
+</tr>
+<tr>
 <td>99_flip_animation.py</td>
 <td>Animation with flip function (non-web platforms only)</td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/docs/images/99_flip_animation.gif">Demo</a></td>
@@ -195,15 +215,21 @@ The examples to be copied are as follows:
 </tr>
 <tr>
 <td>30SecondsOfDaylight.pyxapp</td>
-<td>1st Pyxel Jam winning game by Adam</td>
+<td>1st Pyxel Jam winning game by <a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/30SecondsOfDaylight.html">Demo</a></td>
 <td><a href="https://github.com/kitao/30SecondsOfDaylight">Code</a></td>
 </tr>
 <tr>
 <td>megaball.pyxapp</td>
-<td>Arcade ball physics game by Adam</td>
+<td>Arcade ball physics game by <a href="https://x.com/helpcomputer0">Adam</a></td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/megaball.html">Demo</a></td>
 <td><a href="https://github.com/helpcomputer/megaball">Code</a></td>
+</tr>
+<tr>
+<td>8bit-bgm-gen.pyxapp</td>
+<td>Background music generator by <a href="https://x.com/frenchbread1222">frenchbread</a></td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/8bit-bgm-gen.html">Demo</a></td>
+<td><a href="https://github.com/shiromofufactory/8bit-bgm-generator">Code</a></td>
 </tr>
 </table>
 
@@ -273,19 +299,25 @@ pyxel.show()
 
 ### Run Pyxel Application
 
-The created Python script can be executed with the following command:
+A created Python script can be executed using the `python` command:
+
+```sh
+python PYTHON_SCRIPT_FILE
+```
+
+It can also be run with the `pyxel run` command:
 
 ```sh
 pyxel run PYTHON_SCRIPT_FILE
 ```
 
-It can also be executed like a normal Python script:
+Additionally, the `pyxel watch` command enables monitoring of changes in a specified directory, automatically re-running the program when changes are detected:
 
 ```sh
-python3 PYTHON_SCRIPT_FILE
+pyxel watch WATCH_DIR PYTHON_SCRIPT_FILE
 ```
 
-(For Windows, type `python` instead of `python3`)
+Directory monitoring can be stopped by pressing `Ctrl(Command)+C`.
 
 ### Special Controls
 
@@ -299,10 +331,16 @@ The following special controls can be performed while a Pyxel application is run
   Reset the recording start time of the screen capture video
 - `Alt(Option)+3`<br>
   Save the screen capture video to the desktop (up to 10 seconds)
+- `Alt(Option)+9`<br>
+  Switch between screen modes (Crisp/Smooth/Retro)
 - `Alt(Option)+0`<br>
   Toggle the performance monitor (fps, update time, and draw time)
 - `Alt(Option)+Enter`<br>
   Toggle full screen
+- `Shift+Alt(Option)+1/2/3`<br>
+  Save the corresponding image bank to the desktop
+- `Shift+Alt(Option)+0`<br>
+  Save the current color palette to the desktop
 
 ### How to Create Resources
 
@@ -314,16 +352,15 @@ It starts with the following command:
 pyxel edit PYXEL_RESOURCE_FILE
 ```
 
-If the specified Pyxel resource file (.pyxres) exists, the file is loaded, and if it does not exist, a new file is created with the specified name.
-If the resource file is omitted, the name is `my_resource.pyxres`.
+If the specified Pyxel resource file (.pyxres) exists, the file is loaded, and if it does not exist, a new file is created with the specified name. If the resource file is omitted, the name is `my_resource.pyxres`.
 
-After starting Pyxel Editor, the file can be switched by dragging and dropping another resource file. If the resource file is dragged and dropped while holding down `Ctrl(Cmd)` key, only the resource type (Image/Tilemap/Sound/Music) that is currently being edited will be loaded. This operation enables to combine multiple resource files into one.
+After starting Pyxel Editor, the file can be switched by dragging and dropping another resource file.
 
 The created resource file can be loaded with `load` function.
 
 Pyxel Editor has the following edit modes.
 
-**Image Editor:**
+**Image Editor**
 
 The mode to edit the image banks.
 
@@ -331,9 +368,9 @@ The mode to edit the image banks.
 <img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/image_editor.gif">
 </a>
 
-By dragging and dropping an image file (png/gif/jpeg) onto the Image Editor screen, the image can be loaded into the currently selected image bank.
+Drag and drop an image file (PNG/GIF/JPEG) onto the Image Editor to load the image into the currently selected image bank.
 
-**Tilemap Editor:**
+**Tilemap Editor**
 
 The mode to edit tilemaps in which images of the image banks are arranged in a tile pattern.
 
@@ -341,7 +378,9 @@ The mode to edit tilemaps in which images of the image banks are arranged in a t
 <img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/tilemap_editor.gif">
 </a>
 
-**Sound Editor:**
+Drag and drop a TMX file (Tiled Map File) onto the Tilemap Editor to load its layer in the drawing order that corresponds to the currently selected tilemap number.
+
+**Sound Editor**
 
 The mode to edit sounds.
 
@@ -349,7 +388,7 @@ The mode to edit sounds.
 <img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/sound_editor.gif">
 </a>
 
-**Music Editor:**
+**Music Editor**
 
 The mode to edit musics in which the sounds are arranged in order of playback.
 
@@ -362,7 +401,7 @@ The mode to edit musics in which the sounds are arranged in order of playback.
 Pyxel images and tilemaps can also be created by the following methods:
 
 - Create an image from a list of strings with `Image.set` function or `Tilemap.set` function
-- Load an image file (png/gif/jpeg) in Pyxel palette with `Image.load` function
+- Load an image file (PNG/GIF/JPEG) in Pyxel palette with `Image.load` function
 
 Pyxel sounds can also be created in the following method:
 
@@ -374,7 +413,7 @@ Please refer to the API reference for usage of these functions.
 
 Pyxel supports a dedicated application distribution file format (Pyxel application file) that works across platforms.
 
-Create the Pyxel application file (.pyxapp) with the following command:
+Create the Pyxel application file (.pyxapp) with the `pyxel package` command:
 
 ```sh
 pyxel package APP_DIR STARTUP_SCRIPT_FILE
@@ -382,7 +421,7 @@ pyxel package APP_DIR STARTUP_SCRIPT_FILE
 
 If the application should include resources or additional modules, place them in the application directory.
 
-The created application file can be executed with the following command:
+The created application file can be executed with the `pyxel play` command:
 
 ```sh
 pyxel play PYXEL_APP_FILE
@@ -411,15 +450,15 @@ Pyxel application file also can be converted to an executable or an HTML file wi
   Show the screen and wait until the `Esc` key is pressed.
 
 - `flip()`<br>
-  Refrech the screen by one frame. The application exits when the `Esc` key is pressed. This function only works on non-web platforms.
+  Refresh the screen by one frame. The application exits when the `Esc` key is pressed. This function does not work in the web version.
 
 - `quit()`<br>
   Quit the Pyxel application.
 
 ### Resource
 
-- `load(filename, [image], [tilemap], [sound], [music])`<br>
-  Load the resource file (.pyxres). If `False` is specified for the resource type (`image/tilemap/sound/music`), the resource will not be loaded. If a palette file (.pyxpal) of the same name exists in the same location as the resource file, the palette display color will also be changed. The palette file is a hexadecimal entry of the display colors, separated by newlines. The palette file can also be used to change the colors displayed in Pyxel Editor.
+- `load(filename, [excl_images], [excl_tilemaps], [excl_sounds], [excl_musics])`<br>
+  Load the resource file (.pyxres). If an option is `True`, the resource will not be loaded. If a palette file (.pyxpal) of the same name exists in the same location as the resource file, the palette display color will also be changed. The palette file is a hexadecimal entry of the display colors (e.g. `1100FF`), separated by newlines. The palette file can also be used to change the colors displayed in Pyxel Editor.
 
 ### Input
 
@@ -447,12 +486,12 @@ Pyxel application file also can be converted to an executable or an HTML file wi
   List of the palette display colors. The display color is specified by a 24-bit numerical value. Use `colors.from_list` and `colors.to_list` to directly assign and retrieve Python lists.<br>
   e.g. `old_colors = pyxel.colors.to_list(); pyxel.colors.from_list([0x111111, 0x222222, 0x333333]); pyxel.colors[15] = 0x112233`
 
-- `image(img)`<br>
-  Operate the image bank `img` (0-2). (See the Image class)<br>
-  e.g. `pyxel.image(0).load(0, 0, "title.png")`
+- `images`<br>
+  List of the image banks (0-2). (See the Image class)<br>
+  e.g. `pyxel.images[0].load(0, 0, "title.png")`
 
-- `tilemap(tm)`<br>
-  Operate the tilemap `tm` (0-7). (See the Tilemap class)
+- `tilemaps`<br>
+  List of the tilemaps (0-7). (See the Tilemap class)
 
 - `clip(x, y, w, h)`<br>
   Set the drawing area of the screen from (`x`, `y`) to width `w` and height `h`. Reset the drawing area to full screen with `clip()`.
@@ -462,6 +501,9 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 
 - `pal(col1, col2)`<br>
   Replace color `col1` with `col2` at drawing. `pal()` to reset to the initial palette.
+
+- `dither(alpha)`<br>
+  Applies dithering (pseudo-transparency) at drawing. Set `alpha` in the range 0.0-1.0, where 0.0 is transparent and 1.0 is opaque.
 
 - `cls(col)`<br>
   Clear screen with color `col`.
@@ -502,13 +544,13 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 - `fill(x, y, col)`<br>
   Fill the area connected with the same color as (`x`, `y`) with color `col`.
 
-- `blt(x, y, img, u, v, w, h, [colkey])`<br>
-  Copy the region of size (`w`, `h`) from (`u`, `v`) of the image bank `img` (0-2) to (`x`, `y`). If negative value is set for `w` and/or `h`, it will reverse horizontally and/or vertically. If `colkey` is specified, treated as transparent color.
+- `blt(x, y, img, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  Copy the region of size (`w`, `h`) from (`u`, `v`) of the image bank `img`(0-2) to (`x`, `y`). If negative value is set for `w` and/or `h`, it will reverse horizontally and/or vertically. If `colkey` is specified, treated as transparent color. If `rotate`(in degrees), `scale`(1.0 = 100%), or both are specified, the corresponding transformation will be applied.
 
 <img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/blt_figure.png">
 
-- `bltm(x, y, tm, u, v, w, h, [colkey])`<br>
-  Copy the region of size (`w`, `h`) from (`u`, `v`) of the tilemap `tm` (0-7) to (`x`, `y`). If negative value is set for `w` and/or `h`, it will reverse horizontally and/or vertically. If `colkey` is specified, treated as transparent color. The size of a tile is 8x8 pixels and is stored in a tilemap as a tuple of `(tile_x, tile_y)`.
+- `bltm(x, y, tm, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  Copy the region of size (`w`, `h`) from (`u`, `v`) of the tilemap `tm`(0-7) to (`x`, `y`). If negative value is set for `w` and/or `h`, it will reverse horizontally and/or vertically. If `colkey` is specified, treated as transparent color. If `rotate`(in degrees), `scale`(1.0 = 100%), or both are specified, the corresponding transformation will be applied. The size of a tile is 8x8 pixels and is stored in a tilemap as a tuple of `(tile_x, tile_y)`.
 
 <img src="https://raw.githubusercontent.com/kitao/pyxel/main//docs/images/bltm_figure.png">
 
@@ -517,24 +559,24 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 
 ### Audio
 
-- `sound(snd)`<br>
-  Operate the sound `snd` (0-63). (See the Sound class)<br>
-  e.g. `pyxel.sound(0).speed = 60`
+- `sounds`<br>
+  List of the sounds (0-63). (See the Sound class)<br>
+  e.g. `pyxel.sounds[0].speed = 60`
 
-- `music(msc)`<br>
-  Operate the music `msc` (0-7). (See the Music class)
+- `musics`<br>
+  List of the musics (0-7). (See the Music class)
 
-- `play_pos(ch)`<br>
-  Get the sound playback position of channel `ch` (0-3) as a tuple of `(sound no, note no)`. Returns `None` when playback is stopped.
-
-- `play(ch, snd, [tick], [loop])`<br>
-  Play the sound `snd` (0-63) on channel `ch` (0-3). If `snd` is a list, it will be played in order. The playback start position can be specified by `tick` (1 tick = 1/120 seconds). If `True` is specified for `loop`, loop playback is performed.
+- `play(ch, snd, [tick], [loop], [resume])`<br>
+  Play the sound `snd`(0-63) on channel `ch`(0-3). If `snd` is a list, it will be played in order. The playback start position can be specified by `tick`(1 tick = 1/120 seconds). If `True` is specified for `loop`, loop playback is performed. To resume the previous sound after playback ends, set `resume` to `True`.
 
 - `playm(msc, [tick], [loop])`<br>
-  Play the music `msc` (0-7). The playback start position can be specified by `tick` (1 tick = 1/120 seconds). If `True` is specified for `loop`, loop playback is performed.
+  Play the music `msc`(0-7). The playback start position can be specified by `tick`(1 tick = 1/120 seconds). If `True` is specified for `loop`, loop playback is performed.
 
 - `stop([ch])`<br>
-  Stops playback of the specified channel `ch` (0-3). `stop()` to stop playing all channels.
+  Stops playback of the specified channel `ch`(0-3). `stop()` to stop playing all channels.
+
+- `play_pos(ch)`<br>
+  Get the sound playback position of channel `ch`(0-3) as a tuple of `(sound no, note no)`. Returns `None` when playback is stopped.
 
 ### Math
 
@@ -559,7 +601,7 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 - `atan2(y, x)`<br>
   Returns the arctangent of `y`/`x` in degrees.
 
-- `rseed(seed: int)`<br>
+- `rseed(seed)`<br>
   Sets the seed of the random number generator.
 
 - `rndi(a, b)`<br>
@@ -581,10 +623,10 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 
 - `set(x, y, data)`<br>
   Set the image at (`x`, `y`) by a list of strings.<br>
-  e.g. `pyxel.image(0).set(10, 10, ["0123", "4567", "89ab", "cdef"])`
+  e.g. `pyxel.images[0].set(10, 10, ["0123", "4567", "89ab", "cdef"])`
 
 - `load(x, y, filename)`<br>
-  Load the image file (png/gif/jpeg) at (`x`, `y`).
+  Load the image file (PNG/GIF/JPEG) at (`x`, `y`).
 
 - `pget(x, y)`<br>
   Get the pixel color at (`x`, `y`).
@@ -597,12 +639,15 @@ Pyxel application file also can be converted to an executable or an HTML file wi
 - `width`, `height`<br>
   The width and height of the tilemap
 
-- `refimg`<br>
+- `imgsrc`<br>
   The image bank (0-2) referenced by the tilemap
 
 - `set(x, y, data)`<br>
   Set the tilemap at (`x`, `y`) by a list of strings.<br>
   e.g. `pyxel.tilemap(0).set(0, 0, ["0000 0100 a0b0", "0001 0101 a1b1"])`
+
+- `load(x, y, filename, layer)`<br>
+  Load the layer in the drawing order `layer`(0-) from the TMX file (Tiled Map File) at (`x`, `y`).
 
 - `pget(x, y)`<br>
   Get the tile at (`x`, `y`). A tile is a tuple of `(tile_x, tile_y)`.
@@ -622,7 +667,7 @@ Pyxel application file also can be converted to an executable or an HTML file wi
   List of volumes (0-7)
 
 - `effects`<br>
-  List of effects (0:None / 1:Slide / 2:Vibrato / 3:FadeOut)
+  List of effects (0:None / 1:Slide / 2:Vibrato / 3:FadeOut / 4:Half-FadeOut / 5:Quarter-FadeOut)
 
 - `speed`<br>
   Playback speed. 1 is the fastest, and the larger the number, the slower the playback speed. At 120, the length of one note becomes 1 second.
@@ -631,29 +676,29 @@ Pyxel application file also can be converted to an executable or an HTML file wi
   Set notes, tones, volumes, and effects with a string. If the tones, volumes, and effects length are shorter than the notes, it is repeated from the beginning.
 
 - `set_notes(notes)`<br>
-  Set the notes with a string made of 'CDEFGAB'+'#-'+'0123' or 'R'. Case-insensitive and whitespace is ignored.<br>
-  e.g. `pyxel.sound(0).set_notes("G2B-2D3R RF3F3F3")`
+  Set the notes with a string made of 'CDEFGAB'+'#-'+'01234' or 'R'. Case-insensitive and whitespace is ignored.<br>
+  e.g. `pyxel.sounds[0].set_notes("G2B-2D3R RF3F3F3")`
 
 - `set_tones(tones)`<br>
   Set the tones with a string made of 'TSPN'. Case-insensitive and whitespace is ignored.<br>
-  e.g. `pyxel.sound(0).set_tones("TTSS PPPN")`
+  e.g. `pyxel.sounds[0].set_tones("TTSS PPPN")`
 
 - `set_volumes(volumes)`<br>
   Set the volumes with a string made of '01234567'. Case-insensitive and whitespace is ignored.<br>
-  e.g. `pyxel.sound(0).set_volumes("7777 7531")`
+  e.g. `pyxel.sounds[0].set_volumes("7777 7531")`
 
 - `set_effects(effects)`<br>
-  Set the effects with a string made of 'NSVF'. Case-insensitive and whitespace is ignored.<br>
-  e.g. `pyxel.sound(0).set_effects("NFNF NVVS")`
+  Set the effects with a string made of 'NSVFHQ'. Case-insensitive and whitespace is ignored.<br>
+  e.g. `pyxel.sounds[0].set_effects("NFNF NVVS")`
 
 ### Music Class
 
-- `snds_list`<br>
+- `seqs`<br>
   Two-dimensional list of sounds (0-63) with the number of channels
 
-- `set(snds0, snds1, snds2, snds3)`<br>
-  Set the lists of sound (0-63) of all channels. If an empty list is specified, that channel is not used for playback.<br>
-  e.g. `pyxel.music(0).set([0, 1], [2, 3], [4], [])`
+- `set(seq0, seq1, seq2, ...)`<br>
+  Set the lists of sound (0-63) of channels. If an empty list is specified, that channel is not used for playback.<br>
+  e.g. `pyxel.musics[0].set([0, 1], [], [3])`
 
 ### Advanced APIs
 
@@ -681,9 +726,7 @@ Submitted pull request is deemed to have agreed to publish under [MIT License](h
 
 - [Q&A](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
 - [User Examples](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
-- [Discord Server (English)](https://discord.gg/Z87eYHN)
-- [Discord Server (Japanese - 日本語版)](https://discord.gg/qHA5BCS)
-- [Developer's Twitter account](https://twitter.com/kitao)
+- [Developer X account](https://x.com/kitao)
 
 ## License
 

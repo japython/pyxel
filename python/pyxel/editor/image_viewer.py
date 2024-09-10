@@ -8,8 +8,8 @@ class ImageViewer(Widget):
     def __init__(self, parent):
         """
         Variables:
-            image_no_var
-            tilemap_no_var
+            image_index_var
+            tilemap_index_var
             focus_x_var
             focus_y_var
             viewport_x_var
@@ -17,12 +17,12 @@ class ImageViewer(Widget):
             help_message_var
         """
 
-        if hasattr(parent, "tilemap_no_var"):
+        if hasattr(parent, "tilemap_index_var"):
             y = 80
             height = 66
             slider_amount = 8
             self._is_tilemap_mode = True
-            self.copy_var("tilemap_no_var", parent)
+            self.copy_var("tilemap_index_var", parent)
         else:
             y = 16
             height = 130
@@ -33,7 +33,7 @@ class ImageViewer(Widget):
         self._press_y = 0
         self._drag_offset_x = 0
         self._drag_offset_y = 0
-        self.copy_var("image_no_var", parent)
+        self.copy_var("image_index_var", parent)
         self.copy_var("help_message_var", parent)
 
         # Initialize focus_x_var
@@ -142,30 +142,27 @@ class ImageViewer(Widget):
 
     def __on_mouse_hover(self, x, y):
         x, y = self._screen_to_focus(x, y)
-        s = (
-            "TILE:SHIFT+CURSOR"
-            if self._is_tilemap_mode
-            else "TARGET:CURSOR IMPORT:DROP"
-        )
         self.help_message_var = (
-            s + " " + f"({x},{y})" if self._is_tilemap_mode else f"({x * 8},{y * 8})"
+            f"TILE:SHIFT+CURSOR ({x},{y})"
+            if self._is_tilemap_mode
+            else f"TARGET:CURSOR ({x * 8},{y * 8})"
         )
 
     def __on_draw(self):
         self.draw_panel(self.x, self.y, self.width, self.height)
 
         # Draw image
-        pyxel.pal()
+        pyxel.user_pal()
         pyxel.blt(
             self.x + 1,
             self.y + 1,
-            self.image_no_var,
+            self.image_index_var,
             self.viewport_x_var * 8,
             self.viewport_y_var * 8,
             self.width - 2,
             self.height - 2,
         )
-        pyxel.pal2()
+        pyxel.pal()
 
         # Draw focus
         x = self.x + (self.focus_x_var - self.viewport_x_var) * 8 + 1

@@ -11,7 +11,7 @@ from .widgets import ImageButton, ImageToggleButton, NumberPicker
 class MusicEditor(EditorBase):
     """
     Variables:
-        music_no_var
+        music_index_var
         should_loop_var
         is_playing_var
         help_message_var
@@ -26,20 +26,25 @@ class MusicEditor(EditorBase):
 
         # Initialize field cursor
         self.field_cursor = FieldCursor(
+            self,
             max_field_length=MAX_MUSIC_LENGTH,
             field_wrap_length=16,
+            max_field_values=[pyxel.NUM_SOUNDS - 1] * 4,
             get_field=self.get_field,
             add_pre_history=self.add_pre_history,
             add_post_history=self.add_post_history,
-            cross_filed_copying=True,
+            enable_cross_field_copy=True,
         )
 
         # Initialize music picker
         self._music_picker = NumberPicker(
             self, 45, 17, min_value=0, max_value=pyxel.NUM_MUSICS - 1, value=0
         )
+        self._music_picker.add_event_listener(
+            "mouse_hover", self.__on_music_picker_mouse_hover
+        )
         self.add_number_picker_help(self._music_picker)
-        self.copy_var("music_no_var", self._music_picker, "value_var")
+        self.copy_var("music_index_var", self._music_picker, "value_var")
 
         # Initialize play button
         self._play_button = ImageButton(
@@ -86,27 +91,41 @@ class MusicEditor(EditorBase):
         self.add_event_listener("update", self.__on_update)
         self.add_event_listener("draw", self.__on_draw)
 
-    def play_pos(self, ch):
-        return self._play_pos[ch]
-
     def get_field(self, index):
         if index >= pyxel.NUM_CHANNELS:
             return
-        music = pyxel.music(self.music_no_var)
-        return music.snds_list[index]
+        music = pyxel.musics[self.music_index_var]
+        seqs_len = len(music.seqs)
+        if seqs_len < pyxel.NUM_CHANNELS:
+            seqs = music.seqs.to_list()
+            seqs.extend([[] for _ in range(pyxel.NUM_CHANNELS - seqs_len)])
+            music.seqs.from_list(seqs)
+        elif seqs_len > pyxel.NUM_CHANNELS:
+            seqs = music.seqs.to_list()
+            del seqs[pyxel.NUM_CHANNELS :]
+            music.seqs.from_list(seqs)
+        return music.seqs[index]
 
-    def add_pre_history(self, x, y):
+    def add_pre_history(self, x=None, y=None, *, bank_copy=False):
         self._history_data = data = {}
-        data["music_no"] = self.music_no_var
-        data["old_cursor_pos"] = (x, y)
-        data["old_field"] = self.field_cursor.field.to_list()
+        data["music_index"] = self.music_index_var
+        if bank_copy:
+            data["old_data"] = [self.get_field(i).to_list() for i in range(4)]
+        else:
+            data["old_cursor_pos"] = (x, y)
+            data["old_field"] = self.field_cursor.field.to_list()
 
-    def add_post_history(self, x, y):
+    def add_post_history(self, x=None, y=None, *, bank_copy=False):
         data = self._history_data
-        data["new_cursor_pos"] = (x, y)
-        data["new_field"] = self.field_cursor.field.to_list()
-        if data["old_field"] != data["new_field"]:
-            self.add_history(self._history_data)
+        if bank_copy:
+            data["new_data"] = [self.get_field(i).to_list() for i in range(4)]
+            if data["new_data"] != data["old_data"]:
+                self.add_history(data)
+        else:
+            data["new_cursor_pos"] = (x, y)
+            data["new_field"] = self.field_cursor.field.to_list()
+            if data["new_field"] != data["old_field"]:
+                self.add_history(data)
 
     def _play(self, is_partial):
         self.is_playing_var = True
@@ -117,10 +136,10 @@ class MusicEditor(EditorBase):
         tick = 0
         if is_partial:
             for i in range(self.field_cursor.x):
-                music = pyxel.music(self.music_no_var)
-                sound = pyxel.sound(music.snds_list[self.field_cursor.y][i])
+                music = pyxel.music(self.music_index_var)
+                sound = pyxel.sounds[music.seqs[self.field_cursor.y][i]]
                 tick += len(sound.notes) * sound.speed
-        pyxel.playm(self.music_no_var, tick=tick, loop=self.should_loop_var)
+        pyxel.playm(self.music_index_var, tick=tick, loop=self.should_loop_var)
 
     def _stop(self):
         self.is_playing_var = False
@@ -130,17 +149,43 @@ class MusicEditor(EditorBase):
         self._loop_button.is_enabled_var = True
         pyxel.stop()
 
+    def __on_music_picker_mouse_hover(self, x, y):
+        self.help_message_var = "COPY_ALL:CTRL+SHIFT+C/X/V"
+
+    def __on_play_button_press(self):
+        self._play(pyxel.btn(pyxel.KEY_SHIFT))
+
+    def __on_stop_button_press(self):
+        self._stop()
+
+    def __on_play_button_mouse_hover(self, x, y):
+        self.help_message_var = "PLAY:SPACE PART-PLAY:SHIFT+SPACE"
+
+    def __on_stop_button_mouse_hover(self, x, y):
+        self.help_message_var = "STOP:SPACE"
+
+    def __on_loop_button_mouse_hover(self, x, y):
+        self.help_message_var = "LOOP:L"
+
     def __on_undo(self, data):
         self._stop()
-        self.music_no_var = data["music_no"]
-        self.field_cursor.move_to(*data["old_cursor_pos"], False)
-        self.field_cursor.field.from_list(data["old_field"])
+        self.music_index_var = data["music_index"]
+        if "old_data" in data:
+            for i in range(4):
+                self.get_field(i).from_list(data["old_data"][i])
+        else:
+            self.field_cursor.move_to(*data["old_cursor_pos"], False)
+            self.field_cursor.field.from_list(data["old_field"])
 
     def __on_redo(self, data):
         self._stop()
-        self.music_no_var = data["music_no"]
-        self.field_cursor.move_to(*data["new_cursor_pos"], False)
-        self.field_cursor.field.from_list(data["new_field"])
+        self.music_index_var = data["music_index"]
+        if "new_data" in data:
+            for i in range(4):
+                self.get_field(i).from_list(data["new_data"][i])
+        else:
+            self.field_cursor.move_to(*data["new_cursor_pos"], False)
+            self.field_cursor.field.from_list(data["new_field"])
 
     def __on_hide(self):
         self._stop()
@@ -163,23 +208,9 @@ class MusicEditor(EditorBase):
             self._stop()
         if self._loop_button.is_enabled_var and pyxel.btnp(pyxel.KEY_L):
             self.should_loop_var = not self.should_loop_var
-        self.field_cursor.process_input()
+        if not self.is_playing_var:
+            self.field_cursor.process_input()
 
     def __on_draw(self):
         self.draw_panel(11, 16, 218, 9)
         pyxel.text(23, 18, "MUSIC", TEXT_LABEL_COLOR)
-
-    def __on_play_button_press(self):
-        self._play(pyxel.btn(pyxel.KEY_SHIFT))
-
-    def __on_stop_button_press(self):
-        self._stop()
-
-    def __on_play_button_mouse_hover(self, x, y):
-        self.help_message_var = "PLAY:SPACE PART-PLAY:SHIFT+SPACE"
-
-    def __on_stop_button_mouse_hover(self, x, y):
-        self.help_message_var = "STOP:SPACE"
-
-    def __on_loop_button_mouse_hover(self, x, y):
-        self.help_message_var = "LOOP:L"

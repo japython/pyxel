@@ -7,13 +7,13 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H27VDKD)
 
-[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) ]
+[ [English](../README.md) | [中文](README.cn.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) | [Türkçe](README.tr.md) | [Українська](README.uk.md) ]
 
 **Pyxel (ピクセル)** は Python 向けのレトロゲームエンジンです。
 
 使える色は 16 色のみ、同時に再生できる音は 4 音までなど、レトロゲーム機を意識したシンプルな仕様で、Python でドット絵スタイルのゲームづくりが気軽に楽しめます。
 
-<img src="images/pyxel_300000_downloads.gif" width="480">
+<img src="images/pyxel_message.png" width="480">
 
 Pyxel 開発のモチベーションはユーザーの皆さんからのフィードバックです。GitHub で Pyxel へのスター登録をよろしくお願いします！
 
@@ -64,7 +64,7 @@ Pyxel はオープンソースで、無料で自由に使えます。Pyxel で�
 
 ### Windows
 
-[Python3](https://www.python.org/) (バージョン 3.7 以上) をインストールした後に、次のコマンドを実行します。
+[Python3](https://www.python.org/) (バージョン 3.8 以上) をインストールした後に、次のコマンドを実行します。
 
 ```sh
 pip install -U pyxel
@@ -74,17 +74,19 @@ pip install -U pyxel
 
 ### Mac
 
-[Python3](https://www.python.org/) (バージョン 3.7 以上) をインストールした後に、次のコマンドを実行します。
+[Homebrew](https://brew.sh/) をインストールした後に、次のコマンドを実行します。
 
 ```sh
-python3 -m pip install -U pyxel
+brew install pipx
+pipx ensurepath
+pipx install pyxel
 ```
 
-Mac に標準でインストールされている Python3 を使用する場合は、`pyxel` コマンドを有効にするために、上記コマンドの先頭に`sudo`を追加してください。
+Pyxel インストール後にバージョンを更新する場合は、`pipx upgrade pyxel`を実行してください。
 
 ### Linux
 
-SDL2 パッケージ (Ubuntu の場合は`libsdl2-dev`)、[Python3](https://www.python.org/) (バージョン 3.7 以上)、`python3-pip`をインストールした後に、次のコマンドを実行します。
+SDL2 パッケージ (Ubuntu の場合は`libsdl2-dev`)、[Python3](https://www.python.org/) (バージョン 3.8 以上)、`python3-pip`をインストールした後に、次のコマンドを実行します。
 
 ```sh
 sudo pip3 install -U pyxel
@@ -188,22 +190,46 @@ pyxel copy_examples
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py">Code</a></td>
 </tr>
 <tr>
+<td>14_synthesizer.py</td>
+<td>オーディオ拡張機によるシンセサイザー</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/14_synthesizer.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/14_synthesizer.py">Code</a></td>
+</tr>
+<tr>
+<td>15_tiled_map_file.py</td>
+<td>タイルマップファイル (.tmx) の読み込みと描画</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py">Code</a></td>
+</tr>
+<tr>
+<td>16_transform.py</td>
+<td>画像の回転と拡大縮小</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/16_transform.html">Demo</a></td>
+<td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py">Code</a></td>
+</tr>
+<tr>
 <td>99_flip_animation.py</td>
-<td>flip 関数によるアニメーション (非Web環境のみ)</td>
+<td>flip 関数によるアニメーション (非 Web 環境のみ)</td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/docs/images/99_flip_animation.gif">Demo</a></td>
 <td><a href="https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/99_flip_animation.py">Code</a></td>
 </tr>
 <tr>
 <td>30SecondsOfDaylight.pyxapp</td>
-<td>第 1 回 Pyxel Jam 優勝ゲーム (Adam制作)</td>
+<td>第 1 回 Pyxel Jam 優勝ゲーム (<a href="https://x.com/helpcomputer0">Adam</a>制作)</td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/30SecondsOfDaylight.html">Demo</a></td>
 <td><a href="https://github.com/kitao/30SecondsOfDaylight">Code</a></td>
 </tr>
 <tr>
 <td>megaball.pyxapp</td>
-<td>アーケードボール物理ゲーム (Adam制作)</td>
+<td>アーケードボール物理ゲーム (<a href="https://x.com/helpcomputer0">Adam</a>制作)</td>
 <td><a href="https://kitao.github.io/pyxel/wasm/examples/megaball.html">Demo</a></td>
 <td><a href="https://github.com/helpcomputer/megaball">Code</a></td>
+</tr>
+<tr>
+<td>8bit-bgm-gen.pyxapp</td>
+<td>BGM自動作成ツール (<a href="https://x.com/frenchbread1222">frenchbread</a>制作)</td>
+<td><a href="https://kitao.github.io/pyxel/wasm/examples/8bit-bgm-gen.html">Demo</a></td>
+<td><a href="https://github.com/shiromofufactory/8bit-bgm-generator">Code</a></td>
 </tr>
 </table>
 
@@ -273,19 +299,25 @@ pyxel.show()
 
 ### アプリケーションの実行方法
 
-作成した Python スクリプトは次のコマンドで実行できます。
+作成した Python スクリプトは`python`コマンドで実行できます。
+
+```sh
+python Pythonスクリプトファイル
+```
+
+`pyxel run`コマンドで実行することも可能です。
 
 ```sh
 pyxel run Pythonスクリプトファイル
 ```
 
-また、通常の Python スクリプトと同様に実行することもできます。
+また、`pyxel watch`コマンドで、指定したディレクトリ内の変更を監視して、変化があったら自動的にプログラムを再実行することができます。
 
 ```sh
-python3 Pythonスクリプトファイル
+pyxel watch WATCH_DIR Pythonスクリプトファイル
 ```
 
-(Windows の場合は`python3`の代わりに`python`と入力してください)
+ディレクトリの監視は`Ctrl(Command)+C`で終了します。
 
 ### 特殊操作
 
@@ -299,10 +331,16 @@ Pyxel アプリケーション実行中に、以下の特殊操作を行うこ�
   画面キャプチャ動画の録画開始時刻をリセットする
 - `Alt(Option)+3`<br>
   画面キャプチャ動画をデスクトップに保存する (最大 10 秒)
+- `Alt(Option)+9`<br>
+  画面モード (Crisp/Smooth/Retro) を切り替える
 - `Alt(Option)+0`<br>
   パフォーマンスモニタ (fps、update 時間、draw 時間) の表示を切り替える
 - `Alt(Option)+Enter`<br>
   フルスクリーン表示を切り替える
+- `Shift+Alt(Option)+1/2/3`<br>
+  対応するイメージバンクをデスクトップに保存する
+- `Shift+Alt(Option)+0`<br>
+  現在のカラーパレットをデスクトップに保存する
 
 ### リソースの作成方法
 
@@ -318,13 +356,11 @@ pyxel edit Pyxelリソースファイル
 
 Pyxel Editor の起動後に、別のリソースファイルをドラッグ＆ドロップすることでファイルを切り替えることができます。
 
-また、`Ctrl(Cmd)`キーを押しながらリソースファイルをドラッグ＆ドロップすると、現在編集中のリソースタイプ (イメージ/タイルマップ/サウンド/ミュージック) のみが読み込まれます。この操作により、複数のリソースファイルを 1 つにまとめることができます。
-
 作成したリソースファイルは Pyxel アプリケーションから`load`関数で読み込めます。
 
 Pyxel Editor には以下の編集モードがあります。
 
-**イメージエディタ:**
+**イメージエディタ**
 
 イメージバンクの画像を編集する画面です。
 
@@ -332,9 +368,9 @@ Pyxel Editor には以下の編集モードがあります。
 <img src="images/image_editor.gif">
 </a>
 
-イメージエディタ画面に画像ファイル (png/gif/jpeg) をドラッグ＆ドロップすると、画像を選択中のイメージバンクに読み込むことができます。
+イメージエディタに画像ファイル (PNG/GIF/JPEG) をドラッグ＆ドロップすると、選択中のイメージバンクに画像を読み込むことができます。
 
-**タイルマップエディタ:**
+**タイルマップエディタ**
 
 イメージバンクの画像をタイル状に並べたタイルマップを編集する画面です。
 
@@ -342,7 +378,9 @@ Pyxel Editor には以下の編集モードがあります。
 <img src="images/tilemap_editor.gif">
 </a>
 
-**サウンドエディタ:**
+タイルマップエディタに TMX ファイル (Tiled Map File) をドラッグ＆ドロップすると、選択中のタイルマップ番号に対応した描画順のレイヤーを読み込むことができます。
+
+**サウンドエディタ**
 
 サウンドを編集する画面です。
 
@@ -350,7 +388,7 @@ Pyxel Editor には以下の編集モードがあります。
 <img src="images/sound_editor.gif">
 </a>
 
-**ミュージックエディタ:**
+**ミュージックエディタ**
 
 サウンドを再生順に並べたミュージックを編集する画面です。
 
@@ -363,7 +401,7 @@ Pyxel Editor には以下の編集モードがあります。
 Pyxel 用の画像やタイルマップは以下の方法で作成することもできます。
 
 - `Image.set`や`Tilemap.set`関数で文字列のリストから作成する
-- `Image.load`関数で Pyxel 向け配色の画像ファイル (png/gif/jpeg) を読み込む
+- `Image.load`関数で Pyxel 向け配色の画像ファイル (PNG/GIF/JPEG) を読み込む
 
 Pyxel 用のサウンドやミュージックは以下の方法で作成することもできます。
 
@@ -375,7 +413,7 @@ Pyxel 用のサウンドやミュージックは以下の方法で作成する�
 
 Pyxel ではプラットフォームによらず動作する、専用のアプリケーション配布ファイル形式 (Pyxel アプリケーションファイル) をサポートしています。
 
-Pyxel アプリケーションファイル (.pyxapp) は次のコマンドで作成します。
+Pyxel アプリケーションファイル (.pyxapp) は`pyxel package`コマンドで作成します。
 
 ```sh
 pyxel package アプリケーションのディレクトリ 起動スクリプトファイル
@@ -383,13 +421,13 @@ pyxel package アプリケーションのディレクトリ 起動スクリプ�
 
 リソースや追加モジュールを同梱する場合は、アプリケーションのディレクトリ内に配置してください。
 
-作成したアプリケーションファイルは以下のコマンドで実行します。
+作成したアプリケーションファイルは`pyxel play`コマンドで実行します。
 
 ```sh
 pyxel play Pyxelアプリケーションファイル
 ```
 
-Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'pyxel app2html'コマンドで、実行可能ファイルや HTML ファイルに変換することもできます。
+Pyxel アプリケーションファイルは、`pyxel app2exe`コマンドや`pyxel app2html`コマンドで、実行可能ファイルや HTML ファイルに変換することもできます。
 
 ## API リファレンス
 
@@ -412,15 +450,15 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
   画面を表示して`Esc`キーが押されるまで待機します。
 
 - `flip()`<br>
-  画面を 1 フレーム更新します。`ESC`を押すとアプリケーションは終了します。この関数は Web 以外のプラットフォームでのみ動作します。
+  画面を 1 フレーム更新します。`ESC`を押すとアプリケーションは終了します。この関数は Web 版では動作しません。
 
 - `quit()`<br>
   Pyxel アプリケーションを終了します。
 
 ### リソース
 
-- `load(filename, [image], [tilemap], [sound], [music])`<br>
-  リソースファイル (.pyxres) を読み込みます。リソースタイプ (`image/tilemap/sound/music`) に`False`を指定すると、そのリソースは読み込まれません。また、同名のパレットファイル (.pyxpal) がリソースファイルと同じ場所に存在する場合は、パレットの表示色も変更されます。パレットファイルは表示色を改行区切りの 16 進数で入力します。パレットファイルを使うことで Pyxel Editor の表示色も変更可能です。
+- `load(filename, [excl_images], [excl_tilemaps], [excl_sounds], [excl_musics])`<br>
+  リソースファイル (.pyxres) を読み込みます。オプションに`True`を指定すると、そのリソースは読み込まれません。また、同名のパレットファイル (.pyxpal) がリソースファイルと同じ場所に存在する場合は、パレットの表示色も変更されます。パレットファイルは表示色を改行区切りの 16 進数 (例：`1100FF`) で入力します。パレットファイルを使うことで Pyxel Editor の表示色も変更可能です。
 
 ### 入力
 
@@ -448,12 +486,12 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
   パレットの表示色リスト。表示色は 24 ビット数値で指定します。Python リストを直接代入、取得する場合は`colors.from_list`と`colors.to_list`を使用してください。<br>
   例：`old_colors = pyxel.colors.to_list(); pyxel.colors.from_list([0x111111, 0x222222, 0x333333]); pyxel.colors[15] = 0x112233`
 
-- `image(img)`<br>
-  イメージバンク`img` (0-2) を操作します。(イメージクラスを参照のこと)<br>
-  例：`pyxel.image(0).load(0, 0, "title.png")`
+- `images`<br>
+  イメージバンク (0-2) のリスト。(イメージクラスを参照のこと)<br>
+  例：`pyxel.images[0].load(0, 0, "title.png")`
 
-- `tilemap(tm)`<br>
-  タイルマップ`tm` (0-7) を操作します。(タイルマップクラスを参照のこと)
+- `tilemaps`<br>
+  タイルマップ (0-7) のリスト。(タイルマップクラスを参照のこと)
 
 - `clip(x, y, w, h)`<br>
   画面の描画領域を (`x`, `y`) から幅`w`、高さ`h`に設定します。`clip()`で描画領域を全画面にリセットします。
@@ -463,6 +501,9 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 
 - `pal(col1, col2)`<br>
   描画時に色`col1`を`col2`に置き換えます。`pal()`で初期状態にリセットします。
+
+- `dither(alpha)`<br>
+  描画時にディザリング (擬似半透明) を適用します。`alpha`は 0.0-1.0 の範囲で設定し、0.0 が透明、1.0 が不透明になります。
 
 - `cls(col)`<br>
   画面を色`col`でクリアします。
@@ -503,13 +544,13 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 - `fill(x, y, col)`<br>
   (`x`, `y`) と同じ色でつながっている領域を色`col`で塗りつぶします。
 
-- `blt(x, y, img, u, v, w, h, [colkey])`<br>
-  イメージバンク`img` (0-2) の (`u`, `v`) からサイズ (`w`, `h`) の領域を (`x`, `y`) にコピーします。`w`、`h`それぞれに負の値を設定すると水平、垂直方向に反転します。`colkey`に色を指定すると透明色として扱われます。
+- `blt(x, y, img, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  イメージバンク`img`(0-2) の (`u`, `v`) からサイズ (`w`, `h`) の領域を (`x`, `y`) にコピーします。`w`、`h`それぞれに負の値を設定すると水平、垂直方向に反転します。`colkey`に色を指定すると透明色として扱われます。`rotate`(度:Degree)、`scale`(1.0=100%)、またはその両方を指定すると対応する変換が適用されます。
 
 <img src="images/blt_figure.png">
 
-- `bltm(x, y, tm, u, v, w, h, [colkey])`<br>
-  タイルマップ`tm` (0-7) の (`u`, `v`) からサイズ (`w`, `h`) の領域を (`x`, `y`) にコピーします。`w`、`h`それぞれに負の値を設定すると水平、垂直方向に反転します。`colkey`に色を指定すると透明色として扱われます。1 タイルのサイズは 8x8 ピクセルで、`(tile_x, tile_y)`のタプルとしてタイルマップに格納されています。
+- `bltm(x, y, tm, u, v, w, h, [colkey], [rotate], [scale])`<br>
+  タイルマップ`tm`(0-7) の (`u`, `v`) からサイズ (`w`, `h`) の領域を (`x`, `y`) にコピーします。`w`、`h`それぞれに負の値を設定すると水平、垂直方向に反転します。`colkey`に色を指定すると透明色として扱われます。`rotate`(度:Degree)、`scale`(1.0=100%)、またはその両方を指定すると対応する変換が適用されます。1 タイルのサイズは 8x8 ピクセルで、`(tile_x, tile_y)`のタプルとしてタイルマップに格納されています。
 
 <img src="images/bltm_figure.png">
 
@@ -518,24 +559,24 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 
 ### オーディオ
 
-- `sound(snd)`<br>
-  サウンド`snd` (0-63) を操作します。(サウンドクラスを参照のこと)<br>
-  例：`pyxel.sound(0).speed = 60`
+- `sounds`<br>
+  サウンド (0-63) のリスト。(サウンドクラスを参照のこと)<br>
+  例：`pyxel.sounds[0].speed = 60`
 
-- `music(msc)`<br>
-  ミュージック`msc` (0-7) を操作します。(ミュージッククラスを参照のこと)
+- `musics`<br>
+  ミュージック (0-7) のリスト。(ミュージッククラスを参照のこと)
 
-- `play_pos(ch)`<br>
-  チャンネル`ch` (0-3) のサウンド再生位置を`(サウンド番号, ノート番号)`のタプルとして取得します。再生停止時は`None`を返します。
-
-- `play(ch, snd, [tick], [loop])`<br>
-  チャンネル`ch` (0-3) でサウンド`snd` (0-63) を再生します。`snd`がリストの場合順に再生されます。再生開始位置は`tick` (1 tick = 1/120 秒) で指定できます。`loop`に`True`を指定するとループ再生します。
+- `play(ch, snd, [tick], [loop], [resume])`<br>
+  チャンネル`ch`(0-3) でサウンド`snd`(0-63) を再生します。`snd`がリストの場合順に再生されます。再生開始位置は`tick`(1 tick = 1/120 秒) で指定できます。`loop`に`True`を指定するとループ再生します。再生終了後に以前の音に復帰させるには`resume`に`True`を指定します。
 
 - `playm(msc, [tick], [loop])`<br>
-  ミュージック`msc` (0-7) を再生します。再生開始位置は`tick` (1 tick = 1/120 秒) で指定できます。`loop`に`True`を指定するとループ再生します。
+  ミュージック`msc`(0-7) を再生します。再生開始位置は`tick`(1 tick = 1/120 秒) で指定できます。`loop`に`True`を指定するとループ再生します。
 
 - `stop([ch])`<br>
-  指定したチャンネル`ch` (0-3) の再生を停止します。`stop()`で全チャンネルの再生を停止します。
+  指定したチャンネル`ch`(0-3) の再生を停止します。`stop()`で全チャンネルの再生を停止します。
+
+- `play_pos(ch)`<br>
+  チャンネル`ch`(0-3) のサウンド再生位置を`(サウンド番号, ノート番号)`のタプルとして取得します。再生停止時は`None`を返します。
 
 ### 数学
 
@@ -552,15 +593,15 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
   `x`の平方根を返します。
 
 - `sin(deg)`<br>
-  `deg`度(Degree)の正弦を返します。
+  `deg`度 (Degree) の正弦を返します。
 
 - `cos(deg)`<br>
-  `deg`度(Degree)の余弦を返します。
+  `deg`度 (Degree) の余弦を返します。
 
 - `atan2(y, x)`<br>
-  `y`/`x`の逆正接を度(Degree)で返します。
+  `y`/`x`の逆正接を度 (Degree) で返します。
 
-- `rseed(seed: int)`<br>
+- `rseed(seed)`<br>
   乱数生成器のシードを設定します。
 
 - `rndi(a, b)`<br>
@@ -582,10 +623,10 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 
 - `set(x, y, data)`<br>
   (`x`, `y`) に文字列のリストでイメージを設定します。<br>
-  例：`pyxel.image(0).set(10, 10, ["0123", "4567", "89ab", "cdef"])`
+  例：`pyxel.images[0].set(10, 10, ["0123", "4567", "89ab", "cdef"])`
 
 - `load(x, y, filename)`<br>
-  (`x`, `y`) に画像ファイル (png/gif/jpeg) を読み込みます。
+  (`x`, `y`) に画像ファイル (PNG/GIF/JPEG) を読み込みます。
 
 - `pget(x, y)`<br>
   (`x`, `y`) のピクセルの色を取得します。
@@ -598,12 +639,15 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 - `width`, `height`<br>
   タイルマップの幅と高さ
 
-- `refimg`<br>
+- `imgsrc`<br>
   タイルマップが参照するイメージバンク (0-2)
 
 - `set(x, y, data)`<br>
   (`x`, `y`) に文字列のリストでタイルマップを設定します。<br>
   例：`pyxel.tilemap(0).set(0, 0, ["0000 0100 a0b0", "0001 0101 a1b1"])`
+
+- `load(x, y, filename, layer)`<br>
+  (`x`, `y`) に TMX ファイル (Tiled Map File) から描画順が`layer`(0-) のレイヤーを読み込みます。
 
 - `pget(x, y)`<br>
   (`x`, `y`) のタイルを取得します。タイルは`(tile_x, tile_y)`のタプルです。
@@ -614,7 +658,7 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
 ### サウンドクラス
 
 - `notes`<br>
-  音程 (0-127) のリスト。数値が大きいほど音程は高くなり、33 で'A2'(440Hz)になります。休符は-1 です。
+  音程 (0-127) のリスト。数値が大きいほど音程は高くなり、33 で 'A2'(440Hz) になります。休符は -1 です。
 
 - `tones`<br>
   音色 (0:Triangle / 1:Square / 2:Pulse / 3:Noise) のリスト
@@ -623,7 +667,7 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
   音量 (0-7) のリスト
 
 - `effects`<br>
-  エフェクト (0:None / 1:Slide / 2:Vibrato / 3:FadeOut) のリスト
+  エフェクト (0:None / 1:Slide / 2:Vibrato / 3:FadeOut / 4:Half-FadeOut / 5:Quarter-FadeOut) のリスト
 
 - `speed`<br>
   再生速度。1 が一番速く、数値が大きいほど再生速度は遅くなります。120 で 1 音の長さが 1 秒になります。
@@ -632,29 +676,29 @@ Pyxel アプリケーションファイルは、'pyxel app2exe'コマンドや'p
   文字列で音程、音色、音量、エフェクトを設定します。音色、音量、エフェクトの長さが音程より短い場合は、先頭から繰り返されます。
 
 - `set_notes(notes)`<br>
-  'CDEFGAB'+'#-'+'0123'または'R'の文字列で音程を設定します。大文字と小文字は区別されず、空白は無視されます。<br>
-  例：`pyxel.sound(0).set_notes("G2B-2D3R RF3F3F3")`
+  'CDEFGAB'+'#-'+'01234'または'R'の文字列で音程を設定します。大文字と小文字は区別されず、空白は無視されます。<br>
+  例：`pyxel.sounds[0].set_notes("G2B-2D3R RF3F3F3")`
 
 - `set_tones(tones)`<br>
   'TSPN'の文字列で音色を設定します。大文字と小文字は区別されず、空白は無視されます。<br>
-  例：`pyxel.sound(0).set_tones("TTSS PPPN")`
+  例：`pyxel.sounds[0].set_tones("TTSS PPPN")`
 
 - `set_volumes(volumes)`<br>
   '01234567'の文字列で音量を設定します。大文字と小文字は区別されず、空白は無視されます。<br>
-  例：`pyxel.sound(0).set_volumes("7777 7531")`
+  例：`pyxel.sounds[0].set_volumes("7777 7531")`
 
 - `set_effects(effects)`<br>
-  'NSVF'の文字列でエフェクトを設定します。大文字と小文字は区別されず、空白は無視されます。<br>
-  例：`pyxel.sound(0).set_effects("NFNF NVVS")`
+  'NSVFHQ'の文字列でエフェクトを設定します。大文字と小文字は区別されず、空白は無視されます。<br>
+  例：`pyxel.sounds[0].set_effects("NFNF NVVS")`
 
 ### ミュージッククラス
 
-- `snds_list`<br>
+- `seqs`<br>
   サウンド (0-63) のリストをチャンネル数分連ねた 2 次元リスト
 
-- `set(snds0, snds1, snds2, snds3)`<br>
-  全チャンネルのサウンド (0-63) のリストを設定します。空リストを指定するとそのチャンネルは再生に使用しません。<br>
-  例：`pyxel.music(0).set([0, 1], [2, 3], [4], [])`
+- `set(seq0, seq1, seq2, ...)`<br>
+  チャンネルのサウンド (0-63) のリストを設定します。空リストを指定するとそのチャンネルは再生に使用しません。<br>
+  例：`pyxel.musics[0].set([0, 1], [], [3])`
 
 ### 上級者向け API
 
@@ -681,10 +725,8 @@ Pyxel には「ユーザーを混乱させる可能性がある」「使うた�
 ## その他の情報
 
 - [Q&A](https://github.com/kitao/pyxel/wiki/Pyxel-Q&A)
-- [User Examples](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
-- [Discord Server (English)](https://discord.gg/Z87eYHN)
-- [Discord Server (Japanese - 日本語版)](https://discord.gg/qHA5BCS)
-- [Developer's Twitter account](https://twitter.com/kitao)
+- [ユーザー作品集](https://github.com/kitao/pyxel/wiki/Pyxel-User-Examples)
+- [開発者 X アカウント](https://x.com/kitao)
 
 ## ライセンス
 

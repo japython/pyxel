@@ -7,7 +7,7 @@ from .widgets import Widget
 class TilemapViewer(Widget):
     """
     Variables:
-        tilemap_no_var
+        tilemap_index_var
         focus_x_var
         focus_y_var
         help_message_var
@@ -16,7 +16,7 @@ class TilemapViewer(Widget):
     def __init__(self, parent):
         super().__init__(parent, 157, 16, 66, 65)
         self._tilemap_image = pyxel.Image(64, 63)
-        self.copy_var("tilemap_no_var", parent)
+        self.copy_var("tilemap_index_var", parent)
         self.copy_var("help_message_var", parent)
 
         # Initialize focus_x_var
@@ -57,8 +57,8 @@ class TilemapViewer(Widget):
         self.help_message_var = f"TARGET:CURSOR ({x * 8},{y * 8})"
 
     def __on_update(self):
-        tilemap = pyxel.tilemap(self.tilemap_no_var)
-        image = tilemap.image
+        tilemap = pyxel.tilemaps[self.tilemap_index_var]
+        image = pyxel.images[tilemap.imgsrc]
         start_y = pyxel.frame_count % 8 * 8
         for y in range(start_y, start_y + 8):
             for x in range(64):
@@ -70,7 +70,7 @@ class TilemapViewer(Widget):
         self.draw_panel(self.x, self.y, self.width, self.height)
 
         # Draw tilemap
-        pyxel.pal()
+        pyxel.user_pal()
         pyxel.blt(
             self.x + 1,
             self.y + 1,
@@ -80,7 +80,7 @@ class TilemapViewer(Widget):
             self._tilemap_image.width,
             self._tilemap_image.height,
         )
-        pyxel.pal2()
+        pyxel.pal()
 
         # Draw focus
         x = self.x + self.focus_x_var * 2 + 1
