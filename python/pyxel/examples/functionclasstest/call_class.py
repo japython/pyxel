@@ -1,5 +1,5 @@
 import mymodule
 
-sai = mymodule.Dice()
+sai = mymodule.Dice(12)
 
 print(sai.shoot())
