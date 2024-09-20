@@ -9,7 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
-            "console": "externalTerminal",
+            "console": "integratedTerminal",
             "args": [
                 "${command:pickArgs}"
             ]

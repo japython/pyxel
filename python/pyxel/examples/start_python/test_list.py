@@ -1,15 +1,14 @@
-from datetime import datetime as dt
+#%%
+my_list = list(range(1,11))
+my_list
+# %%
+my_list[::3]
+# %%
+test_text ="I have an apple"
+my_fruits = test_text.split(" ")
+print(my_fruits)
 
-day = input("調べたい日時？（形式 YYYYMMDD）:")
-
-target_day = dt.date.str_to_date(day)
-
-
-if 1 <= target_day.weekday() <= 5:
-
-    print('平日だからがんばろー')
-
-
-else:
-
-    print('ゆっくりやすみましょうー')
+# %%
+my_fruits[2:4] = "a", "pineapple"
+print(my_fruits)
+# %%
